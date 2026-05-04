@@ -1,0 +1,56 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f5f7fa;
+    color: #333;
+}
+
+.container {
+    width: 85%;
+    margin: auto;
+    text-align: center;
+}
+
+header {
+    background: #1e2a38;
+    color: white;
+    padding: 40px 0;
+}
+
+.profile {
+    width: 150px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+section {
+    padding: 40px 0;
+}
+
+h2 {
+    color: #1e2a38;
+}
+
+.job {
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #1e2a38;
+    color: white;
+    text-decoration: none;
+    margin-top: 15px;
+}
+
+footer {
+    background: #1e2a38;
+    color: white;
+    padding: 15px;
+}
