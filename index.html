@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ahmed Ghanem | Senior Accountant</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
@@ -9,250 +10,198 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <style>
-:root {
-    --main:#22c55e;
-    --bg:#0f172a;
-    --card:#1e293b;
-    --text:#fff;
+:root{
+ --main:#22c55e;
+ --bg:#020617;
+ --card:#0f172a;
+ --text:#fff;
 }
 
-.light {
-    --bg:#f1f5f9;
-    --card:#fff;
-    --text:#000;
+body{
+ margin:0;
+ font-family:'Poppins',sans-serif;
+ background:var(--bg);
+ color:var(--text);
+ overflow-x:hidden;
 }
 
-body {
-    margin:0;
-    font-family:'Poppins',sans-serif;
-    background:var(--bg);
-    color:var(--text);
-    transition:.4s;
+/* LOADER */
+#loader{
+ position:fixed;
+ width:100%;
+ height:100%;
+ background:#000;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ z-index:9999;
+}
+#loader h1{
+ color:#22c55e;
+ animation:pulse 1s infinite;
+}
+@keyframes pulse{
+ 0%{opacity:.3}
+ 50%{opacity:1}
+ 100%{opacity:.3}
+}
+
+/* CUSTOM CURSOR */
+.cursor{
+ width:20px;
+ height:20px;
+ border:2px solid #22c55e;
+ border-radius:50%;
+ position:fixed;
+ pointer-events:none;
+ transform:translate(-50%,-50%);
 }
 
 /* HEADER */
-header {
-    height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    background:linear-gradient(270deg,#0f172a,#1e293b,#020617);
-    background-size:600% 600%;
-    animation:bgMove 10s infinite;
+header{
+ height:100vh;
+ display:flex;
+ flex-direction:column;
+ justify-content:center;
+ align-items:center;
+ text-align:center;
+ position:relative;
 }
 
-@keyframes bgMove {
-    0%{background-position:0%}
-    50%{background-position:100%}
-    100%{background-position:0%}
+h1{
+ font-size:60px;
 }
 
-h1 {
-    font-size:55px;
+.btn{
+ padding:12px 25px;
+ background:var(--main);
+ color:#fff;
+ border-radius:30px;
+ text-decoration:none;
+ margin:10px;
+ transition:.3s;
+}
+.btn:hover{
+ transform:scale(1.1);
 }
 
-p {
-    color:#94a3b8;
-}
-
-.btn {
-    padding:12px 25px;
-    margin:10px;
-    background:var(--main);
-    border-radius:30px;
-    color:#fff;
-    text-decoration:none;
-    transition:.3s;
-}
-
-.btn:hover {
-    transform:scale(1.1);
-}
-
-/* SECTION */
-section {
-    padding:70px 10%;
+/* PARALLAX */
+.parallax{
+ position:absolute;
+ width:100%;
+ height:100%;
+ background:radial-gradient(circle,#22c55e22,#000);
+ z-index:-1;
 }
 
 /* CARD */
-.card {
-    background:var(--card);
-    padding:20px;
-    border-radius:15px;
-    margin:15px 0;
-    transition:.4s;
+.card{
+ background:var(--card);
+ padding:20px;
+ border-radius:15px;
+ margin:20px;
+ transition:.3s;
+ transform-style:preserve-3d;
+}
+.card:hover{
+ transform:rotateY(10deg) rotateX(10deg);
 }
 
-.card:hover {
-    transform:translateY(-10px) scale(1.02);
-}
-
-/* STATS */
-.stats {
-    display:flex;
-    justify-content:space-around;
-    text-align:center;
-}
-
-.stat h2 {
-    color:var(--main);
-    font-size:40px;
-}
-
-/* TOGGLE */
-.toggle {
-    position:fixed;
-    top:20px;
-    right:20px;
-    cursor:pointer;
-    background:var(--main);
-    padding:10px;
-    border-radius:50%;
+/* SECTIONS */
+section{
+ padding:80px 10%;
 }
 
 /* SCROLL ANIMATION */
-.hidden {
-    opacity:0;
-    transform:translateY(40px);
-    transition:1s;
+.hidden{
+ opacity:0;
+ transform:translateY(40px);
+ transition:1s;
+}
+.show{
+ opacity:1;
+ transform:translateY(0);
 }
 
-.show {
-    opacity:1;
-    transform:translateY(0);
-}
-
-/* WHATSAPP */
-.whatsapp {
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    background:#25D366;
-    padding:15px;
-    border-radius:50%;
-    color:#fff;
-    font-size:20px;
-}
 </style>
 </head>
 
 <body>
 
-<div class="toggle" onclick="toggleMode()">🌙</div>
+<!-- LOADER -->
+<div id="loader"><h1>Loading...</h1></div>
+
+<!-- CURSOR -->
+<div class="cursor"></div>
 
 <header>
-    <h1>Ahmed Ghanem</h1>
-    <p>Turning Financial Data into Smart Business Decisions</p>
+<div class="parallax"></div>
 
-    <a href="Ahmed_Ghanem_CV.pdf" download class="btn">Download CV</a>
-    <a href="https://wa.me/966565368979" class="btn">WhatsApp</a>
+<h1>Ahmed Ghanem</h1>
+<p>Financial Precision Meets Business Intelligence</p>
+
+<a href="Ahmed_Ghanem_CV.pdf" class="btn">Download CV</a>
+<a href="https://wa.me/966565368979" class="btn">WhatsApp</a>
+
 </header>
 
 <section class="hidden">
-    <h2>Professional Summary</h2>
-    <div class="card">
-        Senior Accountant with 5+ years of experience across Saudi and Egyptian markets, specializing in AR, reconciliation, and financial accuracy.
-    </div>
+<h2>About Me</h2>
+<div class="card">
+Senior Accountant with 5+ years of experience transforming financial data into insights.
+</div>
 </section>
 
 <section class="hidden">
-    <h2>Key Stats</h2>
-    <div class="stats">
-        <div class="stat"><h2 id="c1">0</h2><p>Years</p></div>
-        <div class="stat"><h2 id="c2">0</h2><p>Transactions</p></div>
-        <div class="stat"><h2 id="c3">0</h2><p>Markets</p></div>
-    </div>
+<h2>Dashboard</h2>
+<canvas id="chart"></canvas>
 </section>
 
 <section class="hidden">
-    <h2>Dashboard</h2>
-    <canvas id="chart"></canvas>
+<h2>Experience</h2>
+<div class="card">Senior Accountant - Mezan</div>
+<div class="card">Accountant - Qurtoba</div>
 </section>
-
-<section class="hidden">
-    <h2>Experience</h2>
-
-    <div class="card">
-        <h3>Senior Accountant</h3>
-        <p>Mezan Company</p>
-        <ul>
-            <li>Managed credit sales & collections</li>
-            <li>Reconciled Tamara & suspense accounts</li>
-            <li>Audited operations</li>
-        </ul>
-    </div>
-
-    <div class="card">
-        <h3>Accountant</h3>
-        <p>Qurtoba Factory</p>
-    </div>
-</section>
-
-<section class="hidden">
-    <h2>Skills</h2>
-    <div class="card">
-        Oracle ERP • Excel • VAT • GL • Reconciliation
-    </div>
-</section>
-
-<section class="hidden">
-    <h2>Contact</h2>
-    <div class="card">
-        📧 aliahmedali1602419@gmail.com <br>
-        📞 0565368979
-    </div>
-</section>
-
-<div class="whatsapp">💬</div>
 
 <script>
 
-/* DARK MODE */
-function toggleMode(){
-    document.body.classList.toggle("light");
+/* LOADER */
+window.onload = ()=>{
+ document.getElementById("loader").style.display="none";
 }
 
-/* SCROLL ANIMATION */
-const observer = new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
-        if(entry.isIntersecting){
-            entry.target.classList.add("show");
-        }
-    });
+/* CURSOR */
+const cursor=document.querySelector(".cursor");
+document.addEventListener("mousemove",e=>{
+ cursor.style.top=e.clientY+"px";
+ cursor.style.left=e.clientX+"px";
 });
 
-document.querySelectorAll(".hidden").forEach(el=>observer.observe(el));
+/* SCROLL */
+const obs=new IntersectionObserver(entries=>{
+ entries.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add("show")}
+ });
+});
+document.querySelectorAll(".hidden").forEach(el=>obs.observe(el));
 
-/* COUNTER */
-function counter(id, target){
-    let count=0;
-    let interval=setInterval(()=>{
-        count+=Math.ceil(target/50);
-        if(count>=target){
-            count=target;
-            clearInterval(interval);
-        }
-        document.getElementById(id).innerText=count;
-    },30);
-}
-
-counter("c1",5);
-counter("c2",1000);
-counter("c3",2);
+/* PARALLAX */
+document.addEventListener("mousemove",e=>{
+ document.querySelector(".parallax").style.transform=
+ `translate(${e.clientX/50}px,${e.clientY/50}px)`;
+});
 
 /* CHART */
 new Chart(document.getElementById("chart"),{
-    type:"line",
-    data:{
-        labels:["Jan","Feb","Mar","Apr","May"],
-        datasets:[{
-            label:"Cash Flow",
-            data:[10,20,15,30,25],
-            borderColor:"#22c55e"
-        }]
-    }
+ type:"bar",
+ data:{
+  labels:["Jan","Feb","Mar","Apr"],
+  datasets:[{
+   label:"Revenue",
+   data:[12,19,10,25],
+   backgroundColor:"#22c55e"
+  }]
+ }
 });
 
 </script>
