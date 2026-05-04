@@ -1,41 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr" id="main-html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahmed Ghanem | Senior Accountant Portfolio</title>
+    <title>Ahmed Ghanem | Portfolio</title>
     
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
+            --primary: #2563eb;
             --bg: #ffffff;
             --text-main: #1e293b;
-            --text-dim: #64748b;
-            --primary: #2563eb;
             --card-bg: #f8fafc;
             --border: #e2e8f0;
-            --btn-text: #ffffff;
-            --shadow: 0 10px 30px rgba(0,0,0,0.05);
-            
-            /* Brands */
-            --linkedin: #0077b5; --instagram: #e1306c; --whatsapp: #25d366; --x-color: #000000; --tiktok: #000000;
         }
 
         [data-theme="dark"] {
-            --bg: #0f172a; --text-main: #f1f5f9; --text-dim: #94a3b8; --primary: #38bdf8;
-            --card-bg: rgba(30, 41, 59, 0.7); --border: rgba(255,255,255,0.05); --btn-text: #0f172a;
+            --bg: #0f172a;
+            --text-main: #f1f5f9;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --border: rgba(255,255,255,0.05);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; transition: all 0.3s ease; }
+        /* لغة عربية تستخدم خط Cairo */
+        html[dir="rtl"] body { font-family: 'Cairo', sans-serif; }
+        html[dir="ltr"] body { font-family: 'Plus Jakarta Sans', sans-serif; }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; transition: all 0.3s ease; }
         body { background-color: var(--bg); color: var(--text-main); overflow-x: hidden; line-height: 1.6; }
 
-        .theme-switch {
-            position: fixed; bottom: 30px; left: 30px; width: 50px; height: 50px; border-radius: 50%;
-            background: var(--primary); color: var(--btn-text); display: flex; align-items: center; 
-            justify-content: center; cursor: pointer; z-index: 1000; border: none; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        /* Controls Container */
+        .controls {
+            position: fixed; bottom: 30px; left: 30px; display: flex; flex-direction: column; gap: 10px; z-index: 1000;
+        }
+
+        .control-btn {
+            width: 50px; height: 50px; border-radius: 50%; background: var(--primary); color: #fff;
+            display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
         nav {
@@ -45,170 +49,133 @@
         }
 
         .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 120px 20px 60px; }
-        .profile-img { width: 180px; height: 180px; border-radius: 50%; border: 4px solid var(--primary); margin-bottom: 20px; object-fit: cover; }
-
-        .hero h1 { font-size: clamp(2.5rem, 8vw, 4rem); font-weight: 800; margin-bottom: 10px; }
-        .hero h1 span { color: var(--primary); }
-        .social-links { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; justify-content: center; }
-        .social-links a { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; font-size: 1.2rem; }
+        .profile-img { width: 160px; height: 160px; border-radius: 50%; border: 4px solid var(--primary); margin-bottom: 20px; object-fit: cover; }
 
         section { padding: 80px 10%; }
         .section-title { font-size: 2.2rem; margin-bottom: 40px; text-align: center; font-weight: 800; }
 
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        .card { background: var(--card-bg); padding: 30px; border-radius: 20px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+        .timeline-item { position: relative; padding: 25px; background: var(--card-bg); margin-bottom: 25px; border-radius: 15px; border-inline-start: 5px solid var(--primary); }
         
-        .timeline-container { position: relative; padding-left: 20px; }
-        .timeline-item { position: relative; padding: 25px; background: var(--card-bg); margin-bottom: 25px; border-radius: 15px; border-left: 4px solid var(--primary); box-shadow: var(--shadow); }
-        .timeline-item h3 { font-size: 1.3rem; margin-bottom: 5px; }
-        .timeline-item .date { color: var(--primary); font-weight: 700; font-size: 0.9rem; margin-bottom: 15px; display: block; }
-        .timeline-item ul { list-style: none; }
-        .timeline-item ul li { margin-bottom: 8px; font-size: 0.95rem; position: relative; padding-left: 20px; color: var(--text-dim); }
-        .timeline-item ul li::before { content: "→"; position: absolute; left: 0; color: var(--primary); }
+        .social-links { display: flex; gap: 12px; margin-top: 20px; justify-content: center; }
+        .social-links a { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; }
 
-        .skill-tag { display: inline-block; padding: 8px 16px; background: var(--primary); color: var(--btn-text); border-radius: 50px; margin: 5px; font-size: 0.85rem; font-weight: 600; }
+        .lang-en, .lang-ar { display: none; }
+        html[lang="en"] .lang-en { display: block; }
+        html[lang="ar"] .lang-ar { display: block; }
 
-        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin-top: 30px; }
-        .contact-btn { padding: 20px; background: var(--card-bg); border-radius: 15px; text-align: center; text-decoration: none; color: var(--text-main); border: 1px solid var(--border); }
-        .contact-btn:hover { border-color: var(--primary); transform: translateY(-5px); }
-
-        footer { text-align: center; padding: 60px; color: var(--text-dim); border-top: 1px solid var(--border); }
-
-        @media (max-width: 768px) { section { padding: 60px 5%; } .hero h1 { font-size: 2.8rem; } }
+        footer { text-align: center; padding: 40px; border-top: 1px solid var(--border); opacity: 0.7; }
     </style>
 </head>
-<body>
+<body data-theme="light">
 
-    <button class="theme-switch" id="theme-toggle"><i class="fas fa-moon"></i></button>
+    <div class="controls">
+        <button class="control-btn" id="lang-toggle">EN/عربي</button>
+        <button class="control-btn" id="theme-toggle"><i class="fas fa-moon"></i></button>
+    </div>
 
     <nav>
-        <div class="logo">AG.FINANCE</div>
-        <div style="display: flex; gap: 15px;">
-            <a href="#about" style="color: var(--text-main); text-decoration: none; font-size: 0.75rem; font-weight: 800;">ABOUT</a>
-            <a href="#experience" style="color: var(--text-main); text-decoration: none; font-size: 0.75rem; font-weight: 800;">WORK</a>
+        <div class="logo">AHMED.G</div>
+        <div style="font-weight: 800; font-size: 0.8rem;">
+            <span class="lang-en">SENIOR ACCOUNTANT</span>
+            <span class="lang-ar">محاسب مالي أول</span>
         </div>
     </nav>
 
     <header class="hero">
         <div data-aos="fade-down">
             <img src="./profile.jpg" alt="Ahmed Ali Ghanem" class="profile-img">
-            <h1>Ahmed <span>Ghanem</span></h1>
-            <p style="color: var(--primary); font-weight: 700; letter-spacing: 2px; margin-bottom: 15px;">SENIOR ACCOUNTANT</p>
-            <p style="color: var(--text-dim); max-width: 650px; margin: 0 auto;">Dedicated Accountant with over 5 years of experience in Saudi & Egyptian markets, specializing in AR and financial settlements.</p>
-            
+            <h1>
+                <span class="lang-en">Ahmed <span>Ghanem</span></span>
+                <span class="lang-ar">أحمد <span>غانم</span></span>
+            </h1>
+            <p style="color: var(--primary); font-weight: 700; margin: 10px 0;">
+                <span class="lang-en">Expert in AR & Financial Settlements</span>
+                <span class="lang-ar">خبير في حسابات المدينين والتسويات المالية</span>
+            </p>
             <div class="social-links">
-                <a href="https://www.linkedin.com/in/ahmed-ali-ghanem2419" target="_blank" style="background: var(--linkedin);"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://wa.me/966565368979" target="_blank" style="background: var(--whatsapp);"><i class="fab fa-whatsapp"></i></a>
-                <a href="https://x.com/Ahmed1602419" target="_blank" style="background: var(--x-color);"><i class="fab fa-x-twitter"></i></a>
-                <a href="https://www.instagram.com/ahmeda1602419" target="_blank" style="background: var(--instagram);"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.tiktok.com/@ahmedalighanem70" target="_blank" style="background: var(--tiktok);"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.linkedin.com/in/ahmed-ali-ghanem2419" target="_blank" style="background:#0077b5;"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://wa.me/966565368979" target="_blank" style="background:#25d366;"><i class="fab fa-whatsapp"></i></a>
             </div>
         </div>
     </header>
 
-    <section id="about">
-        <div class="card" data-aos="fade-up">
-            <h2 style="margin-bottom: 20px;">Professional Summary</h2>
-            <p style="color: var(--text-dim);">Expert in managing credit sales, reconciling payment gateways like 'Tamara', and ensuring full compliance with IFRS standards. Strong background in auditing service center logs and verifying internal controls.</p>
-        </div>
-    </section>
-
     <section id="experience">
-        <h2 class="section-title" data-aos="fade-up">Work <span>Experience</span></h2>
-        <div class="timeline-container">
-            <div class="timeline-item" data-aos="fade-right">
-                <h3>Senior Accountant</h3>
-                <span class="date">Mezan Abdulhakeem Al-Odheib Auto Maintenance | Nov 2022 - Present</span>
-                <ul>
-                    <li>Managed credit sales and ensured optimal cash flow through timely collections.</li>
-                    <li>Led reconciliations for "Tamara" payments and customer statements.</li>
-                    <li>Audited daily logs and verified customer discounts for policy compliance.</li>
-                    <li>Provided technical support for ERP system billing and journal entries.</li>
+        <h2 class="section-title">
+            <span class="lang-en">Work <span>Experience</span></span>
+            <span class="lang-ar">الخبرة <span>العملية</span></span>
+        </h2>
+
+        <div class="timeline-item" data-aos="fade-up">
+            <h3>
+                <span class="lang-en">Senior Accountant</span>
+                <span class="lang-ar">محاسب أول</span>
+            </h3>
+            <p style="color: var(--primary); font-weight: 700;">
+                <span class="lang-en">Mezan Auto Maintenance | 2022 - Present</span>
+                <span class="lang-ar">شركة ميزان لصيانة السيارات | 2022 - الآن</span>
+            </p>
+            <div style="margin-top: 10px; color: var(--text-dim);">
+                <ul class="lang-en" style="padding-inline-start: 20px;">
+                    [span_5](start_span)<li>Managed AR & Tamara gateway reconciliations[span_5](end_span).</li>
+                    [span_6](start_span)<li>Audited daily service center logs and verified discounts[span_6](end_span).</li>
+                </ul>
+                <ul class="lang-ar" style="padding-inline-start: 20px;">
+                    [span_7](start_span)<li>إدارة حسابات المدينين وتسويات بوابة "تمارة"[span_7](end_span).</li>
+                    [span_8](start_span)<li>تدقيق السجلات اليومية لمركز الخدمة والتحقق من الخصومات[span_8](end_span).</li>
                 </ul>
             </div>
-            <div class="timeline-item" data-aos="fade-right" data-aos-delay="200">
-                <h3>Accountant</h3>
-                <span class="date">Qurtoba Clothing Factory | Jan 2022 - Oct 2022</span>
-                <ul>
-                    <li>Managed customer payment follow-ups and ensured liquidity.</li>
-                    <li>Recorded daily journal entries and maintained general ledger accuracy.</li>
-                    <li>Performed periodic customer account reconciliations.</li>
-                </ul>
-            </div>
         </div>
     </section>
 
-    <section id="skills" style="background: var(--card-bg);">
-        <h2 class="section-title" data-aos="fade-up">Technical <span>Expertise</span></h2>
-        <div class="grid">
-            <div class="card" data-aos="zoom-in">
-                <h3 style="margin-bottom: 15px;"><i class="fas fa-laptop-code" style="color: var(--primary);"></i> Systems</h3>
-                <div class="skill-tag">Oracle ERP</div>
-                <div class="skill-tag">ZATCA Platforms</div>
-                <div class="skill-tag">Advanced Excel (MOS Master)</div>
-            </div>
-            <div class="card" data-aos="zoom-in" data-aos-delay="100">
-                <h3 style="margin-bottom: 15px;"><i class="fas fa-file-invoice-dollar" style="color: var(--primary);"></i> Accounting</h3>
-                <div class="skill-tag">VAT & WHT Filing</div>
-                <div class="skill-tag">Bank Reconciliation</div>
-                <div class="skill-tag">GL & Journal Entries</div>
-                <div class="skill-tag">IFRS Standards</div>
-            </div>
-        </div>
-    </section>
-
-    <section id="education">
-        <h2 class="section-title" data-aos="fade-up">Education & <span>Certs</span></h2>
-        <div class="grid">
-            <div class="card" data-aos="fade-up">
-                <h4>Bachelor of Commerce (Accounting)</h4>
-                <p style="color: var(--primary); font-weight: 700;">Tanta University, Egypt | 2019</p>
-            </div>
-            <div class="card" data-aos="fade-up" data-aos-delay="100">
-                <h4>MOS Master 2016</h4>
-                <p style="color: var(--text-dim);">Expert-level proficiency in Office Suite.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="connect">
-        <h2 class="section-title" data-aos="fade-up">Quick <span>Connect</span></h2>
-        <div class="contact-grid">
-            <a href="https://wa.me/966565368979" class="contact-btn" data-aos="flip-up">
-                <i class="fab fa-whatsapp" style="color: var(--whatsapp); font-size: 2rem; margin-bottom: 10px;"></i>
-                <p>WhatsApp</p>
-            </a>
-            <a href="https://www.linkedin.com/in/ahmed-ali-ghanem2419" class="contact-btn" data-aos="flip-up" data-aos-delay="100">
-                <i class="fab fa-linkedin" style="color: var(--linkedin); font-size: 2rem; margin-bottom: 10px;"></i>
-                <p>LinkedIn</p>
-            </a>
-            <a href="mailto:aliahmedali1602419@gmail.com" class="contact-btn" data-aos="flip-up" data-aos-delay="200">
-                <i class="fas fa-envelope" style="color: var(--primary); font-size: 2rem; margin-bottom: 10px;"></i>
-                <p>Email Me</p>
-            </a>
+    <section id="education" style="background: var(--card-bg);">
+        <h2 class="section-title">
+            <span class="lang-en">Education</span>
+            <span class="lang-ar">التعليم</span>
+        </h2>
+        <div style="text-align: center;" data-aos="zoom-in">
+            <h3>
+                <span class="lang-en">Bachelor of Commerce (Accounting)</span>
+                <span class="lang-ar">بكالوريوس التجارة (شعبة محاسبة)</span>
+            </h3>
+            <p>
+                <span class="lang-en">Tanta University, Egypt | [span_9](start_span)2019[span_9](end_span)</span>
+                <span class="lang-ar">جامعة طنطا، مصر | [span_10](start_span)2019[span_10](end_span)</span>
+            </p>
         </div>
     </section>
 
     <footer>
-        <p>© 2026 AHMED ALI GHANEM</p>
-        <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.6;">Riyadh, Saudi Arabia | Tanta University Alumnus</p>
+        <p>
+            <span class="lang-en">© 2026 AHMED GHANEM | [span_11](start_span)Riyadh, KSA[span_11](end_span)</span>
+            <span class="lang-ar">© 2026 أحمد غانم | [span_12](start_span)الرياض، المملكة العربية السعودية[span_12](end_span)</span>
+        </p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1000, once: true });
+
+        // Language Toggle
+        const langToggle = document.getElementById('lang-toggle');
+        const html = document.getElementById('main-html');
+        
+        langToggle.addEventListener('click', () => {
+            if (html.getAttribute('lang') === 'en') {
+                html.setAttribute('lang', 'ar');
+                html.setAttribute('dir', 'rtl');
+            } else {
+                html.setAttribute('lang', 'en');
+                html.setAttribute('dir', 'ltr');
+            }
+        });
+
+        // Theme Toggle
         const themeToggle = document.getElementById('theme-toggle');
         const body = document.body;
-        const icon = themeToggle.querySelector('i');
-
         themeToggle.addEventListener('click', () => {
-            if (body.getAttribute('data-theme') === 'dark') {
-                body.removeAttribute('data-theme');
-                icon.classList.replace('fa-sun', 'fa-moon');
-            } else {
-                body.setAttribute('data-theme', 'dark');
-                icon.classList.replace('fa-moon', 'fa-sun');
-            }
+            const currentTheme = body.getAttribute('data-theme');
+            body.setAttribute('data-theme', currentTheme === 'light' ? 'dark' : 'light');
+            themeToggle.innerHTML = currentTheme === 'light' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
         });
     </script>
 </body>
