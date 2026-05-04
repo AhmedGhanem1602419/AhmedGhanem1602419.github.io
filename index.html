@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" id="main-html">
+<html lang="ar" dir="rtl" id="main-html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahmed Ghanem | Portfolio</title>
+    <title>Ahmed Ghanem | Senior Accountant</title>
     
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
@@ -14,67 +14,80 @@
             --primary: #2563eb;
             --bg: #ffffff;
             --text-main: #1e293b;
+            --text-dim: #64748b;
             --card-bg: #f8fafc;
             --border: #e2e8f0;
+            --btn-text: #ffffff;
+            --shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
 
         [data-theme="dark"] {
             --bg: #0f172a;
             --text-main: #f1f5f9;
+            --text-dim: #94a3b8;
+            --primary: #38bdf8;
             --card-bg: rgba(30, 41, 59, 0.7);
             --border: rgba(255,255,255,0.05);
+            --btn-text: #0f172a;
         }
 
-        /* لغة عربية تستخدم خط Cairo */
+        * { margin: 0; padding: 0; box-sizing: border-box; transition: all 0.3s ease; }
+        
         html[dir="rtl"] body { font-family: 'Cairo', sans-serif; }
         html[dir="ltr"] body { font-family: 'Plus Jakarta Sans', sans-serif; }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; transition: all 0.3s ease; }
         body { background-color: var(--bg); color: var(--text-main); overflow-x: hidden; line-height: 1.6; }
 
-        /* Controls Container */
-        .controls {
-            position: fixed; bottom: 30px; left: 30px; display: flex; flex-direction: column; gap: 10px; z-index: 1000;
-        }
+        /* Controls */
+        .controls { position: fixed; bottom: 30px; left: 30px; display: flex; flex-direction: column; gap: 10px; z-index: 1000; }
+        .control-btn { width: 55px; height: 55px; border-radius: 50%; background: var(--primary); color: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; box-shadow: 0 5px 15px rgba(0,0,0,0.2); font-weight: bold; }
 
-        .control-btn {
-            width: 50px; height: 50px; border-radius: 50%; background: var(--primary); color: #fff;
-            display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
+        /* Navbar */
+        nav { position: fixed; top: 0; width: 100%; padding: 20px 8%; display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(15px); border-bottom: 1px solid var(--border); z-index: 900; background: rgba(255,255,255,0.01); }
+        .logo { font-weight: 900; color: var(--primary); letter-spacing: 1px; }
 
-        nav {
-            position: fixed; top: 0; width: 100%; padding: 20px 8%;
-            display: flex; justify-content: space-between; align-items: center;
-            backdrop-filter: blur(15px); border-bottom: 1px solid var(--border); z-index: 900;
-        }
-
+        /* Hero Section */
         .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 120px 20px 60px; }
-        .profile-img { width: 160px; height: 160px; border-radius: 50%; border: 4px solid var(--primary); margin-bottom: 20px; object-fit: cover; }
+        .profile-img { width: 170px; height: 170px; border-radius: 50%; border: 4px solid var(--primary); margin-bottom: 25px; object-fit: cover; box-shadow: var(--shadow); }
+        .hero h1 { font-size: clamp(2.5rem, 8vw, 4rem); font-weight: 800; margin-bottom: 10px; }
+        .hero h1 span { color: var(--primary); }
 
+        /* Social Links */
+        .social-links { display: flex; gap: 15px; margin-top: 25px; flex-wrap: wrap; justify-content: center; }
+        .social-links a { width: 45px; height: 45px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; font-size: 1.3rem; }
+
+        /* Grid & Cards */
         section { padding: 80px 10%; }
         .section-title { font-size: 2.2rem; margin-bottom: 40px; text-align: center; font-weight: 800; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .card { background: var(--card-bg); padding: 35px; border-radius: 25px; border: 1px solid var(--border); box-shadow: var(--shadow); }
 
-        .timeline-item { position: relative; padding: 25px; background: var(--card-bg); margin-bottom: 25px; border-radius: 15px; border-inline-start: 5px solid var(--primary); }
-        
-        .social-links { display: flex; gap: 12px; margin-top: 20px; justify-content: center; }
-        .social-links a { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; }
+        /* Experience Timeline */
+        .timeline-item { padding: 30px; border-inline-start: 4px solid var(--primary); background: var(--card-bg); margin-bottom: 25px; border-radius: 0 20px 20px 0; box-shadow: var(--shadow); position: relative; }
+        html[dir="rtl"] .timeline-item { border-radius: 20px 0 0 20px; }
+        .timeline-item h3 { font-size: 1.4rem; margin-bottom: 5px; }
+        .timeline-item .date { color: var(--primary); font-weight: 700; margin-bottom: 15px; display: block; }
+        .timeline-item ul { padding-inline-start: 20px; color: var(--text-dim); }
 
+        /* Languages Display */
         .lang-en, .lang-ar { display: none; }
         html[lang="en"] .lang-en { display: block; }
         html[lang="ar"] .lang-ar { display: block; }
 
-        footer { text-align: center; padding: 40px; border-top: 1px solid var(--border); opacity: 0.7; }
+        footer { text-align: center; padding: 60px; border-top: 1px solid var(--border); color: var(--text-dim); }
+
+        @media (max-width: 768px) { section { padding: 60px 5%; } .hero h1 { font-size: 2.8rem; } }
     </style>
 </head>
 <body data-theme="light">
 
     <div class="controls">
-        <button class="control-btn" id="lang-toggle">EN/عربي</button>
+        <button class="control-btn" id="lang-toggle">EN</button>
         <button class="control-btn" id="theme-toggle"><i class="fas fa-moon"></i></button>
     </div>
 
     <nav>
-        <div class="logo">AHMED.G</div>
+        <div class="logo">AHMED GHANEM</div>
         <div style="font-weight: 800; font-size: 0.8rem;">
             <span class="lang-en">SENIOR ACCOUNTANT</span>
             <span class="lang-ar">محاسب مالي أول</span>
@@ -83,18 +96,25 @@
 
     <header class="hero">
         <div data-aos="fade-down">
-            <img src="./profile.jpg" alt="Ahmed Ali Ghanem" class="profile-img">
+            <img src="./profile.jpg" alt="Ahmed Ghanem" class="profile-img">
             <h1>
                 <span class="lang-en">Ahmed <span>Ghanem</span></span>
                 <span class="lang-ar">أحمد <span>غانم</span></span>
             </h1>
-            <p style="color: var(--primary); font-weight: 700; margin: 10px 0;">
-                <span class="lang-en">Expert in AR & Financial Settlements</span>
-                <span class="lang-ar">خبير في حسابات المدينين والتسويات المالية</span>
+            <p style="color: var(--primary); font-weight: 700; letter-spacing: 2px; margin-bottom: 15px;">
+                <span class="lang-en">SENIOR ACCOUNTANT | AR SPECIALIST</span>
+                <span class="lang-ar">محاسب أول | أخصائي حسابات مدينين</span>
             </p>
+            <p style="color: var(--text-dim); max-width: 600px; margin: 0 auto;">
+                <span class="lang-en">Over 5 years of experience in Saudi & Egyptian markets, specializing in AR, ERP (Oracle), and VAT compliance.</span>
+                <span class="lang-ar">أكثر من 5 سنوات من الخبرة في السوقين السعودي والمصري، متخصص في حسابات المدينين، أنظمة ERP، وضريبة القيمة المضافة.</span>
+            </p>
+            
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/ahmed-ali-ghanem2419" target="_blank" style="background:#0077b5;"><i class="fab fa-linkedin-in"></i></a>
                 <a href="https://wa.me/966565368979" target="_blank" style="background:#25d366;"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://x.com/Ahmed1602419" target="_blank" style="background:#000;"><i class="fab fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/ahmeda1602419" target="_blank" style="background:#e1306c;"><i class="fab fa-instagram"></i></a>
             </div>
         </div>
     </header>
@@ -104,78 +124,104 @@
             <span class="lang-en">Work <span>Experience</span></span>
             <span class="lang-ar">الخبرة <span>العملية</span></span>
         </h2>
-
+        
         <div class="timeline-item" data-aos="fade-up">
             <h3>
                 <span class="lang-en">Senior Accountant</span>
                 <span class="lang-ar">محاسب أول</span>
             </h3>
-            <p style="color: var(--primary); font-weight: 700;">
-                <span class="lang-en">Mezan Auto Maintenance | 2022 - Present</span>
-                <span class="lang-ar">شركة ميزان لصيانة السيارات | 2022 - الآن</span>
-            </p>
-            <div style="margin-top: 10px; color: var(--text-dim);">
-                <ul class="lang-en" style="padding-inline-start: 20px;">
-                    [span_5](start_span)<li>Managed AR & Tamara gateway reconciliations[span_5](end_span).</li>
-                    [span_6](start_span)<li>Audited daily service center logs and verified discounts[span_6](end_span).</li>
-                </ul>
-                <ul class="lang-ar" style="padding-inline-start: 20px;">
-                    [span_7](start_span)<li>إدارة حسابات المدينين وتسويات بوابة "تمارة"[span_7](end_span).</li>
-                    [span_8](start_span)<li>تدقيق السجلات اليومية لمركز الخدمة والتحقق من الخصومات[span_8](end_span).</li>
-                </ul>
+            <span class="date">
+                <span class="lang-en">Mezan Auto Maintenance | Riyadh | 2022 - Present</span>
+                <span class="lang-ar">شركة ميزان لصيانة السيارات | الرياض | 2022 - الآن</span>
+            </span>
+            <ul class="lang-en">
+                [span_2](start_span)<li>Managed credit sales and Tamara gateway reconciliations.[span_2](end_span)</li>
+                [span_3](start_span)<li>Audited daily service center logs and verified customer discounts.[span_3](end_span)</li>
+                [span_4](start_span)<li>Resolved ERP system issues and supported cashier operations.[span_4](end_span)</li>
+            </ul>
+            <ul class="lang-ar">
+                [span_5](start_span)<li>إدارة مبيعات الآجل وتسويات بوابة دفع "تمارة".[span_5](end_span)</li>
+                [span_6](start_span)<li>تدقيق السجلات اليومية لمركز الخدمة والتحقق من خصومات العملاء.[span_6](end_span)</li>
+                [span_7](start_span)<li>حل مشكلات نظام ERP ودعم عمليات الكاشير.[span_7](end_span)</li>
+            </ul>
+        </div>
+
+        <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+            <h3>
+                <span class="lang-en">Accountant</span>
+                <span class="lang-ar">محاسب</span>
+            </h3>
+            <span class="date">
+                <span class="lang-en">Qurtoba Clothing Factory | Egypt | 2022</span>
+                <span class="lang-ar">مصنع قرطبة للملابس | مصر | 2022</span>
+            </span>
+            <ul class="lang-en">
+                [span_8](start_span)<li>Managed bookkeeping, collections, and account reconciliations.[span_8](end_span)</li>
+            </ul>
+            <ul class="lang-ar">
+                [span_9](start_span)<li>إدارة الدفاتر المحاسبية، التحصيل، وتسويات حسابات العملاء.[span_9](end_span)</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="skills" style="background: var(--card-bg);">
+        <h2 class="section-title">
+            <span class="lang-en">Technical <span>Skills</span></span>
+            <span class="lang-ar">المهارات <span>التقنية</span></span>
+        </h2>
+        <div class="grid">
+            <div class="card" data-aos="zoom-in">
+                <i class="fas fa-calculator" style="font-size: 2rem; color: var(--primary); margin-bottom: 20px;"></i>
+                <h3 class="lang-en">Accounting</h3><h3 class="lang-ar">المحاسبة</h3>
+                [span_10](start_span)<p class="lang-en">AR/AP Management, VAT Compliance (ZATCA), Bank Reconciliation, and IFRS.[span_10](end_span)</p>
+                [span_11](start_span)<p class="lang-ar">إدارة المدينين والدائنين، ضريبة القيمة المضافة (ZATCA)، التسويات البنكية، والمعايير الدولية.[span_11](end_span)</p>
+            </div>
+            <div class="card" data-aos="zoom-in" data-aos-delay="200">
+                <i class="fas fa-desktop" style="font-size: 2rem; color: var(--primary); margin-bottom: 20px;"></i>
+                <h3 class="lang-en">Systems</h3><h3 class="lang-ar">الأنظمة</h3>
+                [span_12](start_span)[span_13](start_span)<p class="lang-en">Oracle ERP, Advanced Excel (MOS Master), and ZATCA Platforms.[span_12](end_span)[span_13](end_span)</p>
+                [span_14](start_span)[span_15](start_span)<p class="lang-ar">نظام Oracle، إكسيل متقدم (MOS Master)، ومنصات هيئة الزكاة والضريبة.[span_14](end_span)[span_15](end_span)</p>
             </div>
         </div>
     </section>
 
-    <section id="education" style="background: var(--card-bg);">
+    <section id="education">
         <h2 class="section-title">
-            <span class="lang-en">Education</span>
-            <span class="lang-ar">التعليم</span>
+            <span class="lang-en">Education</span><span class="lang-ar">التعليم</span>
         </h2>
-        <div style="text-align: center;" data-aos="zoom-in">
-            <h3>
-                <span class="lang-en">Bachelor of Commerce (Accounting)</span>
-                <span class="lang-ar">بكالوريوس التجارة (شعبة محاسبة)</span>
-            </h3>
-            <p>
-                <span class="lang-en">Tanta University, Egypt | [span_9](start_span)2019[span_9](end_span)</span>
-                <span class="lang-ar">جامعة طنطا، مصر | [span_10](start_span)2019[span_10](end_span)</span>
-            </p>
+        <div class="card" style="text-align: center; max-width: 600px; margin: 0 auto;" data-aos="fade-up">
+            <h3 class="lang-en">Bachelor of Commerce (Accounting)</h3>
+            <h3 class="lang-ar">بكالوريوس التجارة (شعبة محاسبة)</h3>
+            <p class="lang-en">Tanta University, Egypt | [span_16](start_span)2019[span_16](end_span)</p>
+            <p class="lang-ar">جامعة طنطا، مصر | [span_17](start_span)2019[span_17](end_span)</p>
         </div>
     </section>
 
     <footer>
-        <p>
-            <span class="lang-en">© 2026 AHMED GHANEM | [span_11](start_span)Riyadh, KSA[span_11](end_span)</span>
-            <span class="lang-ar">© 2026 أحمد غانم | [span_12](start_span)الرياض، المملكة العربية السعودية[span_12](end_span)</span>
-        </p>
+        <p class="lang-en">© 2026 Ahmed Ali Ghanem | Riyadh, Saudi Arabia</p>
+        <p class="lang-ar">© 2026 أحمد علي غانم | الرياض، المملكة العربية السعودية</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1000, once: true });
 
-        // Language Toggle
         const langToggle = document.getElementById('lang-toggle');
+        const themeToggle = document.getElementById('theme-toggle');
         const html = document.getElementById('main-html');
-        
+        const body = document.body;
+
         langToggle.addEventListener('click', () => {
-            if (html.getAttribute('lang') === 'en') {
-                html.setAttribute('lang', 'ar');
-                html.setAttribute('dir', 'rtl');
-            } else {
-                html.setAttribute('lang', 'en');
-                html.setAttribute('dir', 'ltr');
-            }
+            const isEn = html.getAttribute('lang') === 'en';
+            html.setAttribute('lang', isEn ? 'ar' : 'en');
+            html.setAttribute('dir', isEn ? 'rtl' : 'ltr');
+            langToggle.innerText = isEn ? 'EN' : 'عربي';
         });
 
-        // Theme Toggle
-        const themeToggle = document.getElementById('theme-toggle');
-        const body = document.body;
         themeToggle.addEventListener('click', () => {
-            const currentTheme = body.getAttribute('data-theme');
-            body.setAttribute('data-theme', currentTheme === 'light' ? 'dark' : 'light');
-            themeToggle.innerHTML = currentTheme === 'light' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            const isDark = body.getAttribute('data-theme') === 'dark';
+            body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+            themeToggle.innerHTML = isDark ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
         });
     </script>
 </body>
