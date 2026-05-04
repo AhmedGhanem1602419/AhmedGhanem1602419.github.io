@@ -12,212 +12,282 @@
     <style>
         :root {
             --primary: #2563eb;
+            --primary-light: #dbeafe;
             --bg: #ffffff;
-            --text-main: #1e293b;
+            --text-main: #0f172a;
             --text-dim: #64748b;
-            --card-bg: #f8fafc;
-            --border: #e2e8f0;
-            --btn-text: #ffffff;
-            --shadow: 0 10px 30px rgba(0,0,0,0.05);
+            --card-bg: #ffffff;
+            --border: #f1f5f9;
+            --shadow: 0 20px 40px rgba(0,0,0,0.05);
+            --nav-bg: rgba(255, 255, 255, 0.8);
         }
 
         [data-theme="dark"] {
-            --bg: #0f172a;
-            --text-main: #f1f5f9;
+            --bg: #0b0f1a;
+            --text-main: #f8fafc;
             --text-dim: #94a3b8;
             --primary: #38bdf8;
-            --card-bg: rgba(30, 41, 59, 0.7);
-            --border: rgba(255,255,255,0.05);
-            --btn-text: #0f172a;
+            --primary-light: rgba(56, 189, 248, 0.1);
+            --card-bg: #161e2d;
+            --border: #1e293b;
+            --shadow: 0 20px 40px rgba(0,0,0,0.3);
+            --nav-bg: rgba(11, 15, 26, 0.8);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; transition: all 0.3s ease; }
+        * { margin: 0; padding: 0; box-sizing: border-box; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
         
-        html[dir="rtl"] body { font-family: 'Cairo', sans-serif; }
-        html[dir="ltr"] body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { 
+            background-color: var(--bg); 
+            color: var(--text-main); 
+            line-height: 1.7; 
+            overflow-x: hidden;
+            font-family: 'Cairo', 'Plus Jakarta Sans', sans-serif;
+        }
 
-        body { background-color: var(--bg); color: var(--text-main); overflow-x: hidden; line-height: 1.6; }
+        /* Utility Classes */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 25px; }
+        .accent { color: var(--primary); }
+
+        /* Navigation */
+        nav { 
+            position: fixed; top: 0; width: 100%; padding: 15px 0; 
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            z-index: 1000; border-bottom: 1px solid var(--border);
+            background: var(--nav-bg);
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-weight: 800; font-size: 1.2rem; letter-spacing: -0.5px; text-transform: uppercase; }
 
         /* Floating Controls */
-        .controls { position: fixed; bottom: 30px; left: 30px; display: flex; flex-direction: column; gap: 10px; z-index: 1000; }
-        .control-btn { width: 55px; height: 55px; border-radius: 50%; background: var(--primary); color: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; box-shadow: 0 5px 15px rgba(0,0,0,0.2); font-weight: bold; font-size: 0.9rem; }
+        .controls { position: fixed; bottom: 30px; left: 30px; display: flex; flex-direction: column; gap: 12px; z-index: 1100; }
+        .control-btn { 
+            width: 50px; height: 50px; border-radius: 16px; 
+            background: var(--card-bg); color: var(--primary); 
+            display: flex; align-items: center; justify-content: center; 
+            cursor: pointer; border: 1px solid var(--border); box-shadow: var(--shadow); 
+            font-weight: bold;
+        }
+        .control-btn:hover { transform: scale(1.1); background: var(--primary); color: white; }
 
-        /* Navbar */
-        nav { position: fixed; top: 0; width: 100%; padding: 20px 8%; display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(15px); border-bottom: 1px solid var(--border); z-index: 900; background: rgba(255,255,255,0.01); }
-        .logo { font-weight: 900; color: var(--primary); letter-spacing: 1px; }
+        /* Hero Section */
+        .hero { 
+            min-height: 100vh; display: flex; align-items: center; justify-content: center; 
+            padding-top: 80px; text-align: center;
+            background: radial-gradient(circle at top right, var(--primary-light), transparent 40%);
+        }
+        .profile-wrapper { position: relative; display: inline-block; margin-bottom: 30px; }
+        .profile-img { 
+            width: 160px; height: 160px; border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; 
+            border: 4px solid var(--primary); object-fit: cover; animation: morph 8s ease-in-out infinite;
+        }
+        @keyframes morph {
+            0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            50% { border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; }
+        }
 
-        /* Hero */
-        .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 120px 20px 60px; }
-        .profile-img { width: 180px; height: 180px; border-radius: 50%; border: 4px solid var(--primary); margin-bottom: 25px; object-fit: cover; box-shadow: var(--shadow); }
-        
-        .hero h1 { font-size: clamp(2.5rem, 8vw, 4rem); font-weight: 900; margin-bottom: 15px; }
-        .hero h1 span { color: var(--primary); }
+        .hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 900; line-height: 1.1; margin-bottom: 20px; }
+        .hero p.lead { font-size: 1.2rem; color: var(--text-dim); max-width: 650px; margin: 0 auto 35px; }
 
-        /* Experience & Cards */
-        section { padding: 100px 10%; }
-        .section-title { font-size: 2.2rem; margin-bottom: 50px; text-align: center; font-weight: 800; }
-        .timeline-item { padding: 30px; border-inline-start: 5px solid var(--primary); background: var(--card-bg); margin-bottom: 30px; border-radius: 15px; box-shadow: var(--shadow); }
-        
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-        .card { background: var(--card-bg); padding: 30px; border-radius: 20px; border: 1px solid var(--border); transition: 0.4s; }
-        .card:hover { transform: translateY(-10px); border-color: var(--primary); }
+        /* Sections */
+        section { padding: 100px 0; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: 2.5rem; font-weight: 800; margin-bottom: 15px; }
+        .section-header .underline { width: 60px; height: 5px; background: var(--primary); margin: 0 auto; border-radius: 10px; }
 
-        /* Social Icons */
-        .social-links { display: flex; gap: 15px; margin-top: 30px; flex-wrap: wrap; justify-content: center; }
-        .social-links a { width: 45px; height: 45px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; font-size: 1.3rem; }
+        /* Experience Timeline */
+        .timeline { position: relative; max-width: 800px; margin: 0 auto; }
+        .timeline-item { 
+            background: var(--card-bg); padding: 35px; border-radius: 24px; 
+            margin-bottom: 30px; border: 1px solid var(--border); box-shadow: var(--shadow);
+            position: relative;
+        }
+        .timeline-item::before {
+            content: ''; position: absolute; top: 0; bottom: 0; right: -15px; 
+            width: 4px; background: var(--primary); border-radius: 10px;
+        }
+        html[dir="ltr"] .timeline-item::before { right: auto; left: -15px; }
 
-        /* Translation Classes */
-        .lang-en, .lang-ar { display: none; }
-        html[lang="en"] .lang-en { display: block; }
-        html[lang="ar"] .lang-ar { display: block; }
+        /* Cards Grid */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .card { 
+            background: var(--card-bg); padding: 40px; border-radius: 24px; 
+            border: 1px solid var(--border); box-shadow: var(--shadow);
+            height: 100%;
+        }
+        .card i { font-size: 2.5rem; margin-bottom: 25px; display: block; color: var(--primary); }
+        .card h3 { margin-bottom: 15px; font-weight: 700; }
 
-        footer { text-align: center; padding: 60px; border-top: 1px solid var(--border); color: var(--text-dim); }
+        /* Social Links */
+        .social-links { display: flex; gap: 12px; justify-content: center; }
+        .social-links a { 
+            width: 50px; height: 50px; border-radius: 14px; 
+            display: flex; align-items: center; justify-content: center; 
+            text-decoration: none; font-size: 1.2rem; color: #fff;
+        }
+        .social-links a:hover { transform: translateY(-5px) rotate(8deg); }
 
-        @media (max-width: 768px) { section { padding: 60px 5%; } }
+        /* Language Switching */
+        [lang="en"] .lang-ar, [lang="ar"] .lang-en { display: none; }
+
+        footer { text-align: center; padding: 50px 0; border-top: 1px solid var(--border); color: var(--text-dim); font-size: 0.9rem; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.8rem; }
+            section { padding: 70px 0; }
+        }
     </style>
 </head>
 <body data-theme="light">
 
-    <div class="controls">
-        <button class="control-btn" id="lang-toggle">EN</button>
-        <button class="control-btn" id="theme-toggle"><i class="fas fa-moon"></i></button>
-    </div>
-
     <nav>
-        <div class="logo">AHMED ALI GHANEM</div>
-        <div style="font-weight: 800; font-size: 0.8rem; letter-spacing: 1px;">
-            <span class="lang-en">FINANCIAL PROFESSIONAL</span>
-            <span class="lang-ar">محاسب مالي محترف</span>
+        <div class="container">
+            <div class="logo">Ahmed <span class="accent">Ghanem</span></div>
+            <div style="font-weight: 700; font-size: 0.85rem;">
+                <span class="lang-en">FINANCIAL PROFESSIONAL</span>
+                <span class="lang-ar">محاسب مالي محترف</span>
+            </div>
         </div>
     </nav>
 
+    <div class="controls">
+        <button class="control-btn" id="lang-toggle" title="Switch Language">EN</button>
+        <button class="control-btn" id="theme-toggle" title="Toggle Theme"><i class="fas fa-moon"></i></button>
+    </div>
+
     <header class="hero">
-        <div data-aos="fade-down">
-            <img src="./profile.jpg" alt="Ahmed Ghanem" class="profile-img">
+        <div class="container" data-aos="fade-up">
+            <div class="profile-wrapper">
+                <img src="./profile.jpg" alt="Ahmed Ghanem" class="profile-img">
+            </div>
             <h1>
-                <span class="lang-en">Ahmed <span>Ghanem</span></span>
-                <span class="lang-ar">أحمد <span>غانم</span></span>
+                <span class="lang-en">Strategic <span>Accounting</span> Expert</span>
+                <span class="lang-ar">خبير <span>المحاسبة</span> الاستراتيجية</span>
             </h1>
-            <p style="color: var(--primary); font-weight: 700; font-size: 1.2rem; margin-bottom: 20px;">
-                <span class="lang-en">Senior Accountant | AR Specialist</span>
-                <span class="lang-ar">محاسب أول | أخصائي حسابات مدينين</span>
-            </p>
-            <p style="color: var(--text-dim); max-width: 700px; margin: 0 auto 30px;">
-                <span class="lang-en">Over 5 years of excellence in AR management, financial settlements, and ERP systems (Oracle) across KSA and Egypt.</span>
-                <span class="lang-ar">أكثر من 5 سنوات من التميز في إدارة حسابات المدينين والتسويات المالية وأنظمة ERP (أوراكل) في السعودية ومصر.</span>
+            <p class="lead">
+                <span class="lang-en">Senior Accountant specialized in AR Management, Financial Reconciliations, and Oracle ERP systems with 5+ years of driving financial accuracy in KSA and Egypt.</span>
+                <span class="lang-ar">محاسب أول متخصص في إدارة حسابات المدينين، التسويات المالية، وأنظمة Oracle ERP مع خبرة تزيد عن 5 سنوات في تعزيز الدقة المالية في السعودية ومصر.</span>
             </p>
             
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/ahmed-ali-ghanem2419" target="_blank" style="background:#0077b5;"><i class="fab fa-linkedin-in"></i></a>
                 <a href="https://wa.me/966565368979" target="_blank" style="background:#25d366;"><i class="fab fa-whatsapp"></i></a>
                 <a href="https://x.com/Ahmed1602419" target="_blank" style="background:#000;"><i class="fab fa-x-twitter"></i></a>
-                <a href="https://www.tiktok.com/@ahmedalighanem70" target="_blank" style="background:#000;"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.tiktok.com/@ahmedalighanem70" target="_blank" style="background:#ee1d52;"><i class="fab fa-tiktok"></i></a>
             </div>
         </div>
     </header>
 
     <section id="experience">
-        <h2 class="section-title">
-            <span class="lang-en">Career <span>Experience</span></span>
-            <span class="lang-ar">المسار <span>المهني</span></span>
-        </h2>
-        
-        <div class="timeline-item" data-aos="fade-up">
-            <h3 class="lang-en">Senior Accountant</h3>
-            <h3 class="lang-ar">محاسب أول</h3>
-            <p style="color: var(--primary); font-weight: 700; margin: 5px 0 15px;">
-                <span class="lang-en">Mezan Abdulhakeem Al-Odheib | Riyadh | 2022 - Present</span>
-                <span class="lang-ar">ميزان عبد الحكيم العضيب | الرياض | 2022 - الآن</span>
-            </p>
-            <ul style="padding-inline-start: 20px; color: var(--text-dim);">
-                [span_7](start_span)<li class="lang-en">Managed AR, collections, and Tamara gateway reconciliations.[span_7](end_span)</li>
-                [span_8](start_span)<li class="lang-ar">إدارة حسابات المدينين، التحصيل، وتسويات بوابة "تمارة".[span_8](end_span)</li>
-                [span_9](start_span)<li class="lang-en">Audited service center logs and verified customer discounts.[span_9](end_span)</li>
-                [span_10](start_span)<li class="lang-ar">تدقيق سجلات مركز الخدمة والتحقق من خصومات العملاء.[span_10](end_span)</li>
-                [span_11](start_span)<li class="lang-en">Provided ERP technical support for billing and journal entries.[span_11](end_span)</li>
-                [span_12](start_span)<li class="lang-ar">تقديم الدعم الفني لنظام ERP للفواتير والقيود المحاسبية.[span_12](end_span)</li>
-            </ul>
-        </div>
-
-        <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
-            <h3 class="lang-en">Accountant</h3>
-            <h3 class="lang-ar">محاسب</h3>
-            <p style="color: var(--primary); font-weight: 700; margin: 5px 0 15px;">
-                <span class="lang-en">Qurtoba Clothing Factory | Egypt | 2022</span>
-                <span class="lang-ar">مصنع قرطبة للملابس | مصر | 2022</span>
-            </p>
-            <ul style="padding-inline-start: 20px; color: var(--text-dim);">
-                [span_13](start_span)<li class="lang-en">Managed daily journal entries and customer reconciliations.[span_13](end_span)</li>
-                [span_14](start_span)<li class="lang-ar">إدارة القيود اليومية وتسويات حسابات العملاء.[span_14](end_span)</li>
-            </ul>
-        </div>
-    </section>
-
-    <section id="skills" style="background: var(--card-bg);">
-        <h2 class="section-title">
-            <span class="lang-en">Technical <span>Mastery</span></span>
-            <span class="lang-ar">الخبرات <span>التقنية</span></span>
-        </h2>
-        <div class="grid">
-            <div class="card" data-aos="zoom-in">
-                <i class="fas fa-server" style="font-size: 2rem; color: var(--primary); margin-bottom: 20px;"></i>
-                <h3 class="lang-en">Financial Systems</h3><h3 class="lang-ar">الأنظمة المالية</h3>
-                [span_15](start_span)<p class="lang-en">Oracle ERP Specialist[span_15](end_span)[span_16](start_span), MOS Master (Expert Excel)[span_16](end_span)[span_17](start_span), and ZATCA compliance.[span_17](end_span)</p>
-                [span_18](start_span)<p class="lang-ar">أخصائي أوراكل[span_18](end_span)[span_19](start_span)، خبير إكسيل (MOS Master)[span_19](end_span)[span_20](start_span)، والامتثال لمنصة زاتكا.[span_20](end_span)</p>
+        <div class="container">
+            <div class="section-header">
+                <h2 class="lang-en">Professional <span class="accent">Journey</span></h2>
+                <h2 class="lang-ar">المسار <span class="accent">المهني</span></h2>
+                <div class="underline"></div>
             </div>
-            <div class="card" data-aos="zoom-in" data-aos-delay="200">
-                <i class="fas fa-file-invoice-dollar" style="font-size: 2rem; color: var(--primary); margin-bottom: 20px;"></i>
-                <h3 class="lang-en">Accounting Core</h3><h3 class="lang-ar">جوهر المحاسبة</h3>
-                [span_21](start_span)<p class="lang-en">VAT/WHT Filing[span_21](end_span)[span_22](start_span), Bank Reconciliations, and Year-End Closing.[span_22](end_span)</p>
-                [span_23](start_span)<p class="lang-ar">إقرارات ضريبة القيمة المضافة[span_23](end_span)[span_24](start_span)، التسويات البنكية، والإقفال السنوي.[span_24](end_span)</p>
+            
+            <div class="timeline">
+                <div class="timeline-item" data-aos="fade-right">
+                    <h3 class="lang-en">Senior Accountant</h3>
+                    <h3 class="lang-ar">محاسب أول</h3>
+                    <p class="accent" style="font-weight: 700; margin-bottom: 15px;">
+                        <span class="lang-en">Mezan Abdulhakeem Al-Odheib | Riyadh | 2022 - Present</span>
+                        <span class="lang-ar">ميزان عبد الحكيم العضيب | الرياض | 2022 - الآن</span>
+                    </p>
+                    <ul style="padding-inline-start: 20px; color: var(--text-dim);">
+                        <li class="lang-en">Optimized AR processes and managed complex Tamara gateway reconciliations.</li>
+                        <li class="lang-ar">تطوير عمليات حسابات المدينين وإدارة تسويات بوابة "تمارة" المعقدة.</li>
+                        <li class="lang-en">Led internal auditing for service center logs ensuring 100% discount accuracy.</li>
+                        <li class="lang-ar">قيادة التدقيق الداخلي لسجلات مراكز الخدمة لضمان دقة الخصومات بنسبة 100%.</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-right" data-aos-delay="200">
+                    <h3 class="lang-en">General Accountant</h3>
+                    <h3 class="lang-ar">محاسب عام</h3>
+                    <p class="accent" style="font-weight: 700; margin-bottom: 15px;">
+                        <span class="lang-en">Qurtoba Clothing Factory | Egypt | 2022</span>
+                        <span class="lang-ar">مصنع قرطبة للملابس | مصر | 2022</span>
+                    </p>
+                    <ul style="padding-inline-start: 20px; color: var(--text-dim);">
+                        <li class="lang-en">Standardized daily journal entries and streamlined customer statement reconciliations.</li>
+                        <li class="lang-ar">توحيد معايير القيود اليومية وتحسين عمليات مطابقة حسابات العملاء.</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="education">
-        <h2 class="section-title">
-            <span class="lang-en">Education & <span>Certs</span></span>
-            <span class="lang-ar">التعليم <span>والشهادات</span></span>
-        </h2>
-        <div class="grid">
-            <div class="card" data-aos="fade-up">
-                <h4 class="lang-en">Bachelor of Commerce</h4><h4 class="lang-ar">بكالوريوس التجارة</h4>
-                <p class="lang-en">Accounting - Tanta University, Egypt | [span_25](start_span)2019[span_25](end_span)</p>
-                <p class="lang-ar">شعبة المحاسبة - جامعة طنطا، مصر | [span_26](start_span)2019[span_26](end_span)</p>
+    <section id="skills" style="background: var(--primary-light);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="lang-en">Core <span class="accent">Expertise</span></h2>
+                <h2 class="lang-ar">الخبرات <span class="accent">الأساسية</span></h2>
+                <div class="underline"></div>
             </div>
-            <div class="card" data-aos="fade-up" data-aos-delay="200">
-                <h4 class="lang-en">MOS Master 2016</h4><h4 class="lang-ar">شهادة MOS Master</h4>
-                [span_27](start_span)<p class="lang-en">Microsoft Office Specialist Expert Level.[span_27](end_span)</p>
-                [span_28](start_span)<p class="lang-ar">أخصائي ميكروسوفت أوفيس (مستوى خبير).[span_28](end_span)</p>
+            <div class="grid">
+                <div class="card" data-aos="zoom-in">
+                    <i class="fas fa-chart-line"></i>
+                    <h3 class="lang-en">ERP & Systems</h3><h3 class="lang-ar">الأنظمة والـ ERP</h3>
+                    <p class="lang-en" style="color: var(--text-dim);">Expert in Oracle ERP, ZATCA e-invoicing compliance, and MOS Master level Excel for financial modeling.</p>
+                    <p class="lang-ar" style="color: var(--text-dim);">خبير في Oracle ERP، الامتثال للفاتورة الإلكترونية (ZATCA)، ومستوى MOS Master في إكسيل للنمذجة المالية.</p>
+                </div>
+                <div class="card" data-aos="zoom-in" data-aos-delay="200">
+                    <i class="fas fa-balance-scale"></i>
+                    <h3 class="lang-en">Financial Control</h3><h3 class="lang-ar">الرقابة المالية</h3>
+                    <p class="lang-en" style="color: var(--text-dim);">Specialized in VAT/WHT filing, bank reconciliations, and executing precise year-end closing procedures.</p>
+                    <p class="lang-ar" style="color: var(--text-dim);">متخصص في إقرارات الضريبة (VAT/WHT)، التسويات البنكية، وتنفيذ إجراءات الإقفال السنوي بدقة.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <footer>
-        <p class="lang-en">© 2026 AHMED ALI GHANEM | [span_29](start_span)Riyadh, KSA[span_29](end_span)</p>
-        <p class="lang-ar">© 2026 أحمد علي غانم | [span_30](start_span)الرياض، السعودية[span_30](end_span)</p>
+        <div class="container">
+            <p class="lang-en">© 2026 Ahmed Ali Ghanem | Based in Riyadh, KSA</p>
+            <p class="lang-ar">© 2026 أحمد علي غانم | الرياض، المملكة العربية السعودية</p>
+        </div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: true });
+        AOS.init({ duration: 800, once: true });
 
         const langToggle = document.getElementById('lang-toggle');
         const themeToggle = document.getElementById('theme-toggle');
         const html = document.getElementById('main-html');
         const body = document.body;
 
+        // Optimized Language Toggle
         langToggle.addEventListener('click', () => {
-            const isEn = html.getAttribute('lang') === 'en';
-            html.setAttribute('lang', isEn ? 'ar' : 'en');
-            html.setAttribute('dir', isEn ? 'rtl' : 'ltr');
-            langToggle.innerText = isEn ? 'EN' : 'عربي';
+            const currentLang = html.getAttribute('lang');
+            const newLang = currentLang === 'en' ? 'ar' : 'en';
+            const newDir = newLang === 'ar' ? 'rtl' : 'ltr';
+            
+            html.setAttribute('lang', newLang);
+            html.setAttribute('dir', newDir);
+            langToggle.innerText = newLang === 'en' ? 'AR' : 'EN';
+            
+            // Re-initialize AOS to handle direction change animations
+            AOS.refresh();
         });
 
+        // Optimized Theme Toggle
         themeToggle.addEventListener('click', () => {
             const isDark = body.getAttribute('data-theme') === 'dark';
             body.setAttribute('data-theme', isDark ? 'light' : 'dark');
             themeToggle.innerHTML = isDark ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+        });
+
+        // Scroll Effect for Navbar
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.padding = '10px 0';
+                nav.style.boxShadow = 'var(--shadow)';
+            } else {
+                nav.style.padding = '15px 0';
+                nav.style.boxShadow = 'none';
+            }
         });
     </script>
 </body>
