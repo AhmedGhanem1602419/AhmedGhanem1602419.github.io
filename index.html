@@ -1,193 +1,186 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl" id="main-html">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Ahmed Ghanem | Senior Accountant - Riyadh</title>
+    <meta name="description" content="Senior Accountant in Riyadh with 5+ years experience in AR, VAT, and Oracle. Faculty of Commerce Tanta University graduate.">
+    <meta name="keywords" content="Senior Accountant, Riyadh, Accounts Receivable, Oracle ERP, Ahmed Ghanem, المحاسبة, الرياض">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --primary: #0071e3; /* Apple Blue */
+            --bg: #f5f5f7;
+            --text-main: #1d1d1f;
+            --card-bg: rgba(255, 255, 255, 0.8);
+            --border: #d2d2d7;
+            --blur: saturate(180%) blur(20px);
+        }
 
-<title>Ahmed Ghanem | Senior Accountant</title>
+        [data-theme="dark"] {
+            --bg: #000000;
+            --text-main: #f5f5f7;
+            --card-bg: rgba(29, 29, 31, 0.8);
+            --border: #424245;
+        }
 
-<!-- SEO -->
-<meta name="description" content="Ahmed Ghanem - Senior Accountant specialized in AR, ERP, VAT and financial reporting in Saudi Arabia.">
-<meta name="keywords" content="Accountant, AR, VAT, ERP, Saudi Arabia, Finance">
-<meta name="author" content="Ahmed Ghanem">
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html[dir="rtl"] body { font-family: 'Cairo', sans-serif; }
+        html[dir="ltr"] body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background-color: var(--bg); color: var(--text-main); overflow-x: hidden; transition: 0.5s; }
 
-<!-- Font -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+        /* Apple Navbar */
+        nav {
+            position: fixed; top: 0; width: 100%; height: 44px;
+            background: var(--card-bg); backdrop-filter: var(--blur);
+            z-index: 1000; display: flex; justify-content: center; align-items: center;
+            border-bottom: 1px solid var(--border);
+        }
+        nav .nav-container { width: 100%; max-width: 1000px; display: flex; justify-content: space-around; }
+        nav a { color: var(--text-main); text-decoration: none; font-size: 12px; opacity: 0.8; transition: 0.3s; }
+        nav a:hover { opacity: 1; }
 
-<!-- GSAP -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+        /* Hero Section */
+        .hero { 
+            height: 100vh; display: flex; flex-direction: column; 
+            align-items: center; justify-content: center; text-align: center;
+            padding-top: 44px;
+        }
+        .hero h1 { font-size: clamp(40px, 8vw, 80px); font-weight: 900; letter-spacing: -2px; }
+        .hero p { font-size: clamp(18px, 3vw, 24px); opacity: 0.6; margin-top: 10px; }
 
-<style>
+        /* Sections */
+        section { padding: 100px 10%; max-width: 1200px; margin: 0 auto; }
+        .card { 
+            background: var(--card-bg); padding: 40px; border-radius: 20px; 
+            margin-bottom: 30px; backdrop-filter: var(--blur); border: 1px solid var(--border);
+        }
 
-/* Reset */
-*{margin:0;padding:0;box-sizing:border-box}
+        /* Floating Controls */
+        .controls { position: fixed; bottom: 20px; right: 20px; display: flex; gap: 10px; z-index: 1000; }
+        .btn-c { 
+            width: 44px; height: 44px; border-radius: 50%; background: var(--card-bg); 
+            border: 1px solid var(--border); cursor: pointer; color: var(--text-main);
+            display: flex; align-items: center; justify-content: center; font-weight: bold;
+        }
 
-/* Body */
-body{
-    font-family:'Inter',sans-serif;
-    background:#ffffff;
-    color:#111;
-}
+        /* Social Icons */
+        .social-grid { display: flex; gap: 20px; margin-top: 40px; justify-content: center; }
+        .social-grid a { font-size: 24px; color: var(--text-main); opacity: 0.7; transition: 0.3s; }
+        .social-grid a:hover { transform: scale(1.2); color: var(--primary); }
 
-/* Navbar */
-nav{
-    position:fixed;
-    width:100%;
-    background:rgba(255,255,255,0.8);
-    backdrop-filter:blur(10px);
-    padding:15px;
-    text-align:center;
-}
+        /* Language Toggle Classes */
+        .lang-en, .lang-ar { display: none; }
+        html[lang="en"] .lang-en { display: block; }
+        html[lang="ar"] .lang-ar { display: block; }
 
-nav a{
-    margin:0 15px;
-    text-decoration:none;
-    color:#111;
-    font-size:14px;
-}
-
-/* Hero */
-.hero{
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    text-align:center;
-}
-
-.hero img{
-    width:120px;
-    border-radius:50%;
-    margin-bottom:15px;
-}
-
-.hero h1{
-    font-size:36px;
-    font-weight:600;
-}
-
-.hero p{
-    color:#666;
-}
-
-/* Sections */
-section{
-    padding:80px 20px;
-    max-width:900px;
-    margin:auto;
-    text-align:center;
-}
-
-/* Projects */
-.project{
-    border:1px solid #eee;
-    padding:20px;
-    margin-top:20px;
-    border-radius:10px;
-    transition:0.3s;
-}
-
-.project:hover{
-    transform:translateY(-5px);
-}
-
-/* Button */
-.btn{
-    margin-top:15px;
-    padding:10px 20px;
-    background:#111;
-    color:#fff;
-    text-decoration:none;
-    border-radius:20px;
-    display:inline-block;
-}
-
-/* Footer */
-footer{
-    text-align:center;
-    padding:20px;
-    color:#888;
-}
-
-</style>
+        footer { text-align: center; padding: 40px; font-size: 12px; opacity: 0.5; }
+    </style>
 </head>
+<body data-theme="light">
 
-<body>
+    <div class="controls">
+        <button class="btn-c" id="lang-toggle">EN</button>
+        <button class="btn-c" id="theme-toggle"><i class="fas fa-moon"></i></button>
+    </div>
 
-<!-- Navbar -->
-<nav>
-<a href="#about">About</a>
-<a href="#projects">Projects</a>
-<a href="#contact">Contact</a>
-</nav>
+    <nav>
+        <div class="nav-container">
+            <a href="#about"><span class="lang-ar">نبذة</span><span class="lang-en">About</span></a>
+            <a href="#experience"><span class="lang-ar">الخبرة</span><span class="lang-en">Experience</span></a>
+            <a href="#skills"><span class="lang-ar">المهارات</span><span class="lang-en">Skills</span></a>
+            <a href="#contact"><span class="lang-ar">اتصل</span><span class="lang-en">Contact</span></a>
+        </div>
+    </nav>
 
-<!-- Hero -->
-<div class="hero">
-<img src="./profile.jpg" id="hero-img">
-<h1 id="title">Ahmed Ghanem</h1>
-<p id="subtitle">Senior Accountant</p>
-<a href="Ahmed_Ghanem_CV.pdf" class="btn">Download CV</a>
-</div>
+    <header class="hero" id="hero-animate">
+        <h1 class="gsap-up">
+            <span class="lang-ar">أحمد غانم</span>
+            <span class="lang-en">Ahmed Ghanem</span>
+        </h1>
+        <p class="gsap-up">
+            <span class="lang-ar">محاسب مالي أول | الرياض</span>
+            <span class="lang-en">Senior Accountant | [span_6](start_span)[span_7](start_span)[span_8](start_span)Riyadh</span>[span_6](end_span)[span_7](end_span)[span_8](end_span)
+        </p>
+        <div class="social-grid gsap-up">
+            [span_9](start_span)<a href="https://www.linkedin.com/in/ahmed-ali-ghanem2419" target="_blank"><i class="fab fa-linkedin"></i></a>[span_9](end_span)
+            [span_10](start_span)<a href="https://wa.me/966565368979" target="_blank"><i class="fab fa-whatsapp"></i></a>[span_10](end_span)
+            <a href="https://www.facebook.com/share/1CfVu2Z99G/" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://x.com/Ahmed1602419" target="_blank"><i class="fab fa-x-twitter"></i></a>
+        </div>
+    </header>
 
-<!-- About -->
-<section id="about">
-<h2>About</h2>
-<p>
-Senior Accountant with 5+ years experience in Saudi Arabia specializing in Accounts Receivable,
-ERP systems, VAT compliance, and financial reporting.
-</p>
-</section>
+    <section id="experience">
+        <div class="card gsap-scroll">
+            <h2 class="lang-ar">الخبرة المهنية</h2>
+            [span_11](start_span)[span_12](start_span)<h2 class="lang-en">Professional Experience</h2>[span_11](end_span)[span_12](end_span)
+            <br>
+            <h3 class="lang-ar">محاسب أول - شركة ميزان عبد الحكيم العضيب</h3>
+            [span_13](start_span)[span_14](start_span)<h3 class="lang-en">Senior Accountant - Mezan Abdulhakeem Al-Odheib</h3>[span_13](end_span)[span_14](end_span)
+            <p style="color: var(--primary);">2022 - Present | [span_15](start_span)[span_16](start_span)Riyadh, KSA</p>[span_15](end_span)[span_16](end_span)
+            <ul style="margin-top: 15px; padding-right: 20px;">
+                [span_17](start_span)[span_18](start_span)<li class="lang-ar">إدارة حسابات المدينين والتحصيل وتسويات "تمارة"[span_17](end_span)[span_18](end_span).</li>
+                [span_19](start_span)[span_20](start_span)<li class="lang-en">Managed AR, collections, and Tamara reconciliations[span_19](end_span)[span_20](end_span).</li>
+            </ul>
+        </div>
+    </section>
 
-<!-- Projects -->
-<section id="projects">
-<h2>Projects</h2>
+    <section id="skills">
+        <div class="card gsap-scroll">
+            <h2 class="lang-ar">المهارات والشهادات</h2>
+            [span_21](start_span)[span_22](start_span)[span_23](start_span)[span_24](start_span)<h2 class="lang-en">Skills & Certifications</h2>[span_21](end_span)[span_22](end_span)[span_23](end_span)[span_24](end_span)
+            <div style="margin-top: 20px;">
+                <span class="lang-ar">خبير إكسيل (MOS Master) | أوراكل | ضريبة القيمة المضافة (ZATCA)</span>
+                <span class="lang-en">Excel Expert (MOS Master) | Oracle ERP | [span_25](start_span)[span_26](start_span)[span_27](start_span)[span_28](start_span)VAT (ZATCA)</span>[span_25](end_span)[span_26](end_span)[span_27](end_span)[span_28](end_span)
+            </div>
+        </div>
+    </section>
 
-<div class="project">
-<h3>Financial Dashboard</h3>
-<p>Excel dashboard for tracking revenue, expenses, and KPIs.</p>
-</div>
+    <footer>
+        <p>© 2026 Ahmed Ali Ghanem | [span_29](start_span)[span_30](start_span)Tanta University Alumnus[span_29](end_span)[span_30](end_span)</p>
+    </footer>
 
-<div class="project">
-<h3>AR Collection System</h3>
-<p>Improved collection tracking and reporting efficiency.</p>
-</div>
+    <script>
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger);
 
-</section>
+        // Hero Animation
+        gsap.from(".gsap-up", {
+            y: 50, opacity: 0, duration: 1, stagger: 0.2, ease: "power4.out"
+        });
 
-<!-- Contact -->
-<section id="contact">
-<h2>Contact</h2>
-<p>Email: aliahmedali1602419@gmail.com</p>
-<p>Phone: +966565368979</p>
-<a href="https://wa.me/966565368979" class="btn">WhatsApp</a>
-</section>
+        // Scroll Animation for Cards
+        gsap.utils.toArray(".gsap-scroll").forEach(card => {
+            gsap.from(card, {
+                scrollTrigger: { trigger: card, start: "top 80%" },
+                y: 100, opacity: 0, duration: 1.2, ease: "expo.out"
+            });
+        });
 
-<footer>
-© 2026 Ahmed Ghanem
-</footer>
+        // Toggle Buttons
+        const langBtn = document.getElementById('lang-toggle');
+        const themeBtn = document.getElementById('theme-toggle');
+        const html = document.getElementById('main-html');
+        const body = document.body;
 
-<!-- GSAP Animations -->
-<script>
+        langBtn.onclick = () => {
+            const isAr = html.getAttribute('lang') === 'ar';
+            html.setAttribute('lang', isAr ? 'en' : 'ar');
+            html.setAttribute('dir', isAr ? 'ltr' : 'rtl');
+            langBtn.innerText = isAr ? 'AR' : 'EN';
+        };
 
-gsap.from("#hero-img", {y:-50, opacity:0, duration:1});
-gsap.from("#title", {y:30, opacity:0, duration:1, delay:0.3});
-gsap.from("#subtitle", {y:30, opacity:0, duration:1, delay:0.5});
-gsap.from(".btn", {opacity:0, duration:1, delay:0.7});
-
-gsap.from("section", {
-    opacity:0,
-    y:50,
-    duration:1,
-    stagger:0.3,
-    scrollTrigger:{
-        trigger:"section",
-        start:"top 80%"
-    }
-});
-
-</script>
-
+        themeBtn.onclick = () => {
+            const isDark = body.getAttribute('data-theme') === 'dark';
+            body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+            themeBtn.innerHTML = isDark ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+        };
+    </script>
 </body>
 </html>
