@@ -1,126 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Ahmed Ghanem | Senior Accountant</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<!-- SEO -->
+<meta name="description" content="Ahmed Ghanem - Senior Accountant specialized in AR, ERP, VAT and financial reporting in Saudi Arabia.">
+<meta name="keywords" content="Accountant, AR, VAT, ERP, Saudi Arabia, Finance">
+<meta name="author" content="Ahmed Ghanem">
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- Font -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
 <style>
-:root{
- --main:#22c55e;
- --bg:#020617;
- --card:#0f172a;
- --text:#fff;
-}
 
+/* Reset */
+*{margin:0;padding:0;box-sizing:border-box}
+
+/* Body */
 body{
- margin:0;
- font-family:'Poppins',sans-serif;
- background:var(--bg);
- color:var(--text);
- overflow-x:hidden;
+    font-family:'Inter',sans-serif;
+    background:#ffffff;
+    color:#111;
 }
 
-/* LOADER */
-#loader{
- position:fixed;
- width:100%;
- height:100%;
- background:#000;
- display:flex;
- justify-content:center;
- align-items:center;
- z-index:9999;
-}
-#loader h1{
- color:#22c55e;
- animation:pulse 1s infinite;
-}
-@keyframes pulse{
- 0%{opacity:.3}
- 50%{opacity:1}
- 100%{opacity:.3}
+/* Navbar */
+nav{
+    position:fixed;
+    width:100%;
+    background:rgba(255,255,255,0.8);
+    backdrop-filter:blur(10px);
+    padding:15px;
+    text-align:center;
 }
 
-/* CUSTOM CURSOR */
-.cursor{
- width:20px;
- height:20px;
- border:2px solid #22c55e;
- border-radius:50%;
- position:fixed;
- pointer-events:none;
- transform:translate(-50%,-50%);
+nav a{
+    margin:0 15px;
+    text-decoration:none;
+    color:#111;
+    font-size:14px;
 }
 
-/* HEADER */
-header{
- height:100vh;
- display:flex;
- flex-direction:column;
- justify-content:center;
- align-items:center;
- text-align:center;
- position:relative;
+/* Hero */
+.hero{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
 }
 
-h1{
- font-size:60px;
+.hero img{
+    width:120px;
+    border-radius:50%;
+    margin-bottom:15px;
 }
 
-.btn{
- padding:12px 25px;
- background:var(--main);
- color:#fff;
- border-radius:30px;
- text-decoration:none;
- margin:10px;
- transition:.3s;
-}
-.btn:hover{
- transform:scale(1.1);
+.hero h1{
+    font-size:36px;
+    font-weight:600;
 }
 
-/* PARALLAX */
-.parallax{
- position:absolute;
- width:100%;
- height:100%;
- background:radial-gradient(circle,#22c55e22,#000);
- z-index:-1;
+.hero p{
+    color:#666;
 }
 
-/* CARD */
-.card{
- background:var(--card);
- padding:20px;
- border-radius:15px;
- margin:20px;
- transition:.3s;
- transform-style:preserve-3d;
-}
-.card:hover{
- transform:rotateY(10deg) rotateX(10deg);
-}
-
-/* SECTIONS */
+/* Sections */
 section{
- padding:80px 10%;
+    padding:80px 20px;
+    max-width:900px;
+    margin:auto;
+    text-align:center;
 }
 
-/* SCROLL ANIMATION */
-.hidden{
- opacity:0;
- transform:translateY(40px);
- transition:1s;
+/* Projects */
+.project{
+    border:1px solid #eee;
+    padding:20px;
+    margin-top:20px;
+    border-radius:10px;
+    transition:0.3s;
 }
-.show{
- opacity:1;
- transform:translateY(0);
+
+.project:hover{
+    transform:translateY(-5px);
+}
+
+/* Button */
+.btn{
+    margin-top:15px;
+    padding:10px 20px;
+    background:#111;
+    color:#fff;
+    text-decoration:none;
+    border-radius:20px;
+    display:inline-block;
+}
+
+/* Footer */
+footer{
+    text-align:center;
+    padding:20px;
+    color:#888;
 }
 
 </style>
@@ -128,80 +116,75 @@ section{
 
 <body>
 
-<!-- LOADER -->
-<div id="loader"><h1>Loading...</h1></div>
+<!-- Navbar -->
+<nav>
+<a href="#about">About</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+</nav>
 
-<!-- CURSOR -->
-<div class="cursor"></div>
-
-<header>
-<div class="parallax"></div>
-
-<h1>Ahmed Ghanem</h1>
-<p>Financial Precision Meets Business Intelligence</p>
-
+<!-- Hero -->
+<div class="hero">
+<img src="./profile.jpg" id="hero-img">
+<h1 id="title">Ahmed Ghanem</h1>
+<p id="subtitle">Senior Accountant</p>
 <a href="Ahmed_Ghanem_CV.pdf" class="btn">Download CV</a>
-<a href="https://wa.me/966565368979" class="btn">WhatsApp</a>
-
-</header>
-
-<section class="hidden">
-<h2>About Me</h2>
-<div class="card">
-Senior Accountant with 5+ years of experience transforming financial data into insights.
 </div>
+
+<!-- About -->
+<section id="about">
+<h2>About</h2>
+<p>
+Senior Accountant with 5+ years experience in Saudi Arabia specializing in Accounts Receivable,
+ERP systems, VAT compliance, and financial reporting.
+</p>
 </section>
 
-<section class="hidden">
-<h2>Dashboard</h2>
-<canvas id="chart"></canvas>
+<!-- Projects -->
+<section id="projects">
+<h2>Projects</h2>
+
+<div class="project">
+<h3>Financial Dashboard</h3>
+<p>Excel dashboard for tracking revenue, expenses, and KPIs.</p>
+</div>
+
+<div class="project">
+<h3>AR Collection System</h3>
+<p>Improved collection tracking and reporting efficiency.</p>
+</div>
+
 </section>
 
-<section class="hidden">
-<h2>Experience</h2>
-<div class="card">Senior Accountant - Mezan</div>
-<div class="card">Accountant - Qurtoba</div>
+<!-- Contact -->
+<section id="contact">
+<h2>Contact</h2>
+<p>Email: aliahmedali1602419@gmail.com</p>
+<p>Phone: +966565368979</p>
+<a href="https://wa.me/966565368979" class="btn">WhatsApp</a>
 </section>
 
+<footer>
+© 2026 Ahmed Ghanem
+</footer>
+
+<!-- GSAP Animations -->
 <script>
 
-/* LOADER */
-window.onload = ()=>{
- document.getElementById("loader").style.display="none";
-}
+gsap.from("#hero-img", {y:-50, opacity:0, duration:1});
+gsap.from("#title", {y:30, opacity:0, duration:1, delay:0.3});
+gsap.from("#subtitle", {y:30, opacity:0, duration:1, delay:0.5});
+gsap.from(".btn", {opacity:0, duration:1, delay:0.7});
 
-/* CURSOR */
-const cursor=document.querySelector(".cursor");
-document.addEventListener("mousemove",e=>{
- cursor.style.top=e.clientY+"px";
- cursor.style.left=e.clientX+"px";
-});
-
-/* SCROLL */
-const obs=new IntersectionObserver(entries=>{
- entries.forEach(e=>{
-  if(e.isIntersecting){e.target.classList.add("show")}
- });
-});
-document.querySelectorAll(".hidden").forEach(el=>obs.observe(el));
-
-/* PARALLAX */
-document.addEventListener("mousemove",e=>{
- document.querySelector(".parallax").style.transform=
- `translate(${e.clientX/50}px,${e.clientY/50}px)`;
-});
-
-/* CHART */
-new Chart(document.getElementById("chart"),{
- type:"bar",
- data:{
-  labels:["Jan","Feb","Mar","Apr"],
-  datasets:[{
-   label:"Revenue",
-   data:[12,19,10,25],
-   backgroundColor:"#22c55e"
-  }]
- }
+gsap.from("section", {
+    opacity:0,
+    y:50,
+    duration:1,
+    stagger:0.3,
+    scrollTrigger:{
+        trigger:"section",
+        start:"top 80%"
+    }
 });
 
 </script>
