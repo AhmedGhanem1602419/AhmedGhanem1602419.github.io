@@ -1,87 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahmed Ghanem | Senior Accountant</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ahmed Ghanem | Senior Accountant</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* General */
+body {
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background:#f4f6f9;
+    color:#333;
+}
+
+/* Navbar */
+nav {
+    background:#1e2a38;
+    padding:15px;
+    text-align:center;
+}
+
+nav a {
+    color:#fff;
+    margin:0 15px;
+    text-decoration:none;
+    font-size:14px;
+}
+
+/* Hero */
+.hero {
+    background:#1e2a38;
+    color:#fff;
+    text-align:center;
+    padding:60px 20px;
+}
+
+.hero img {
+    width:120px;
+    border-radius:50%;
+    border:3px solid #fff;
+}
+
+.hero h1 {
+    margin:10px 0;
+}
+
+.btn {
+    display:inline-block;
+    margin-top:15px;
+    padding:10px 20px;
+    background:#007bff;
+    color:#fff;
+    border-radius:5px;
+    text-decoration:none;
+}
+
+/* Sections */
+section {
+    padding:50px 20px;
+    max-width:900px;
+    margin:auto;
+}
+
+h2 {
+    text-align:center;
+    margin-bottom:20px;
+}
+
+/* Cards */
+.card {
+    background:#fff;
+    padding:20px;
+    border-radius:8px;
+    margin-top:15px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.05);
+}
+
+/* Skills */
+.skills span {
+    display:inline-block;
+    background:#1e2a38;
+    color:#fff;
+    padding:6px 12px;
+    margin:5px;
+    border-radius:15px;
+}
+
+/* Contact Form */
+form {
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+input, textarea {
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+
+button {
+    padding:10px;
+    background:#1e2a38;
+    color:#fff;
+    border:none;
+    border-radius:5px;
+}
+
+/* Footer */
+footer {
+    background:#1e2a38;
+    color:#fff;
+    text-align:center;
+    padding:15px;
+}
+
+</style>
 </head>
+
 <body>
 
-<header>
-    <div class="container">
-        <img src="profile.jpg" class="profile">
-        <h1>Ahmed Ali Ghanem</h1>
-        <p>Senior Accountant | Accounts Receivable Specialist</p>
-    </div>
-</header>
+<nav>
+<a href="#about">About</a>
+<a href="#experience">Experience</a>
+<a href="#skills">Skills</a>
+<a href="#contact">Contact</a>
+</nav>
 
-<section class="about">
-    <div class="container">
-        <h2>About Me</h2>
-        <p>
-        Dedicated Accountant with 5+ years of experience in Saudi and Egyptian markets.
-        Specialized in Accounts Receivable, financial reconciliation, and ERP systems.
-        Strong expertise in managing credit sales, Tamara reconciliation, and ensuring IFRS compliance.
-        </p>
-    </div>
+<!-- Hero -->
+<div class="hero">
+<img src="./profile.jpg">
+<h1>Ahmed Ghanem</h1>
+<p>Senior Accountant | Accounts Receivable Specialist</p>
+<a href="Ahmed_Ghanem_CV.pdf" class="btn">Download CV</a>
+</div>
+
+<!-- About -->
+<section id="about">
+<h2>About Me</h2>
+<p>
+Dedicated Accountant with 5+ years experience in Saudi & Egyptian markets.
+Specialized in AR, ERP systems, VAT, and financial reporting.
+</p>
 </section>
 
-<section class="experience">
-    <div class="container">
-        <h2>Experience</h2>
+<!-- Experience -->
+<section id="experience">
+<h2>Experience</h2>
 
-        <div class="job">
-            <h3>Senior Accountant</h3>
-            <span>Mezan Abdulhakeem Al-Odheib Auto Maintenance Co. | Nov 2022 – Present</span>
-            <ul>
-                <li>Managed credit sales and collections</li>
-                <li>Handled Tamara payment reconciliation</li>
-                <li>Audited service center operations</li>
-                <li>Maintained suspense accounts</li>
-            </ul>
-        </div>
+<div class="card">
+<h3>Senior Accountant</h3>
+<p>Mezan Auto Maintenance | 2022 - Present</p>
+</div>
 
-        <div class="job">
-            <h3>Accountant</h3>
-            <span>Qurtoba Clothing Factory | Jan 2022 – Oct 2022</span>
-            <ul>
-                <li>Managed collections and customer accounts</li>
-                <li>Recorded journal entries and GL</li>
-                <li>Performed reconciliations</li>
-            </ul>
-        </div>
+<div class="card">
+<h3>Accountant</h3>
+<p>Qurtoba Factory | 2022</p>
+</div>
 
-    </div>
 </section>
 
-<section class="skills">
-    <div class="container">
-        <h2>Skills</h2>
-        <p>Oracle ERP | Excel Advanced | AR/AP | VAT | Bank Reconciliation | Financial Reporting</p>
-    </div>
+<!-- Skills -->
+<section id="skills">
+<h2>Skills</h2>
+
+<div class="skills">
+<span>Oracle ERP</span>
+<span>Excel Advanced</span>
+<span>VAT</span>
+<span>AR/AP</span>
+<span>Reconciliation</span>
+</div>
+
 </section>
 
-<section class="education">
-    <div class="container">
-        <h2>Education</h2>
-        <p>Bachelor of Commerce (Accounting) - Tanta University (2019)</p>
-    </div>
-</section>
+<!-- Contact -->
+<section id="contact">
+<h2>Contact Me</h2>
 
-<section class="contact">
-    <div class="container">
-        <h2>Contact</h2>
-        <p>Email: aliahmedali1602419@gmail.com</p>
-        <p>Phone: +966565368979</p>
-        <p><a href="https://www.linkedin.com/in/ahmed-ali-ghanem2419" target="_blank">LinkedIn</a></p>
+<form action="https://formspree.io/f/your-id" method="POST">
+<input type="text" name="name" placeholder="Your Name" required>
+<input type="email" name="email" placeholder="Your Email" required>
+<textarea name="message" rows="5" placeholder="Your Message"></textarea>
+<button type="submit">Send Message</button>
+</form>
 
-        <a href="Ahmed_Ghanem_CV.pdf" class="btn" download>Download CV</a>
-    </div>
+<p style="margin-top:15px;">
+Email: aliahmedali1602419@gmail.com<br>
+Phone: +966565368979
+</p>
+
 </section>
 
 <footer>
-    <p>© 2026 Ahmed Ghanem</p>
+<p>© 2026 Ahmed Ghanem</p>
 </footer>
 
 </body>
