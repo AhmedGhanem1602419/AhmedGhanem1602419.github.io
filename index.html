@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahmed Ghanem | Financial Strategy & Accounting</title>
+    <title>Ahmed Ghanem | Senior Accountant Portfolio</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -14,85 +14,99 @@
 
     <style>
         :root {
-            --bg-dark: #05070a; /* CEO Matte Black */
-            --accent: #3b82f6;
-            --surface: #0f172a;
-            --text-primary: #f8fafc;
-            --text-secondary: #94a3b8;
-            --border: rgba(255, 255, 255, 0.05);
+            --primary: #2563eb;
+            --primary-glow: rgba(37, 99, 235, 0.4);
+            --bg: #030712;
+            --card-bg: rgba(17, 24, 39, 0.8);
+            --text-main: #f9fafb;
+            --text-dim: #9ca3af;
+            --border: rgba(255, 255, 255, 0.08);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body { 
-            background-color: var(--bg-dark); 
-            color: var(--text-primary); 
-            font-family: 'Inter', sans-serif;
+            background-color: var(--bg); 
+            color: var(--text-main); 
+            font-family: 'Plus Jakarta Sans', sans-serif;
             overflow-x: hidden;
             line-height: 1.6;
         }
 
-        #particles-js { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
+        #particles-js { position: fixed; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
 
-        .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 2; }
 
         /* Navigation */
         nav {
-            position: fixed; top: 0; width: 100%; padding: 30px 0; z-index: 100;
-            background: linear-gradient(to bottom, var(--bg-dark), transparent);
+            position: fixed; top: 0; width: 100%; padding: 20px 0; z-index: 1000;
+            backdrop-filter: blur(15px); border-bottom: 1px solid var(--border);
+            background: rgba(3, 7, 18, 0.2);
         }
-        .nav-inner { display: flex; justify-content: space-between; align-items: center; }
-        .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; letter-spacing: 2px; }
+        .nav-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-weight: 800; font-size: 1.5rem; letter-spacing: -1px; }
 
-        /* Hero: The Executive Look */
-        .hero { height: 100vh; display: flex; align-items: center; }
-        .hero-grid { display: grid; grid-template-columns: 1fr 300px; gap: 40px; align-items: center; }
+        /* Hero Section */
+        .hero { height: 100vh; display: flex; align-items: center; justify-content: center; }
+        .hero-content { text-align: center; }
         
-        .hero h1 { 
-            font-family: 'Playfair Display', serif; font-size: clamp(3rem, 7vw, 4.5rem); 
-            line-height: 1.1; margin-bottom: 24px; 
+        .profile-container {
+            width: 180px; height: 180px; margin: 0 auto 30px;
+            position: relative; padding: 5px;
+            background: linear-gradient(45deg, var(--primary), #60a5fa);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            animation: morph 8s ease-in-out infinite;
+            box-shadow: 0 0 30px var(--primary-glow);
         }
-        .hero p { color: var(--text-secondary); font-size: 1.15rem; max-width: 550px; margin-bottom: 40px; }
-
-        .profile-frame {
-            width: 280px; height: 350px;
-            border-radius: 20px; overflow: hidden;
-            border: 1px solid var(--border);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        .profile-img { 
+            width: 100%; height: 100%; object-fit: cover; 
+            border-radius: inherit; border: 4px solid var(--bg);
         }
-        .profile-img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%); }
 
-        /* Sections */
-        section { padding: 120px 0; }
-        .label { color: var(--accent); text-transform: uppercase; letter-spacing: 3px; font-size: 0.75rem; font-weight: 700; margin-bottom: 16px; display: block; }
-        h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 48px; }
+        @keyframes morph {
+            0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            50% { border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; }
+        }
 
-        /* Experience: Clean & Data-Driven */
-        .exp-item { margin-bottom: 60px; position: relative; padding-left: 30px; border-left: 1px solid var(--border); }
-        .exp-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
-        .exp-title { font-size: 1.25rem; font-weight: 600; }
-        .exp-date { color: var(--accent); font-size: 0.9rem; font-weight: 600; }
-        .exp-company { color: var(--text-secondary); display: block; margin-bottom: 12px; font-size: 0.95rem; }
+        .hero h1 { font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 800; line-height: 1.1; margin-bottom: 15px; }
+        .hero p { color: var(--text-dim); font-size: 1.1rem; max-width: 650px; margin: 0 auto 30px; }
+
+        /* Section Styling */
+        section { padding: 100px 0; border-bottom: 1px solid var(--border); }
+        .section-title { font-size: 2.2rem; font-weight: 800; margin-bottom: 50px; position: relative; }
+        .section-title::after { content: ''; position: absolute; left: 0; bottom: -8px; width: 40px; height: 4px; background: var(--primary); border-radius: 2px; }
+
+        /* Experience & Cards */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .card {
+            background: var(--card-bg); border: 1px solid var(--border);
+            padding: 40px; border-radius: 24px; transition: all 0.4s ease;
+            backdrop-filter: blur(5px);
+        }
+        .card:hover { border-color: var(--primary); transform: translateY(-10px); box-shadow: 0 20px 40px var(--primary-glow); }
+        .card h3 { font-size: 1.3rem; margin-bottom: 8px; color: var(--text-main); }
+        .company { color: var(--primary); font-weight: 700; margin-bottom: 15px; display: block; font-size: 0.9rem; }
         
-        .exp-list { list-style: none; }
-        .exp-list li { color: var(--text-secondary); margin-bottom: 8px; font-size: 0.95rem; display: flex; gap: 12px; }
-        .exp-list li::before { content: "—"; color: var(--accent); }
+        .card ul { list-style: none; color: var(--text-dim); font-size: 0.9rem; }
+        .card li { margin-bottom: 10px; position: relative; padding-left: 20px; }
+        .card li::before { content: '→'; position: absolute; left: 0; color: var(--primary); font-weight: bold; }
 
-        /* Skills Grid */
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; }
-        .skill-box { 
-            background: var(--surface); padding: 32px; border-radius: 16px; 
-            border: 1px solid var(--border); transition: all 0.3s;
+        /* Technical Skills Chips */
+        .skills-container { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+        .skill-chip { 
+            background: rgba(37, 99, 235, 0.1); border: 1px solid var(--primary);
+            color: var(--text-main); padding: 5px 14px; border-radius: 50px; font-size: 0.8rem; font-weight: 600;
         }
-        .skill-box:hover { border-color: var(--accent); transform: translateY(-5px); }
-        .skill-box h3 { font-size: 1.1rem; margin-bottom: 16px; color: var(--accent); }
 
-        footer { padding: 80px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-secondary); font-size: 0.8rem; }
+        /* Footer */
+        footer { padding: 60px 0; text-align: center; color: var(--text-dim); border-top: 1px solid var(--border); }
+        .social-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 25px; }
+        .social-links a { color: var(--text-main); font-size: 1.4rem; transition: 0.3s; }
+        .social-links a:hover { color: var(--primary); transform: scale(1.2); }
 
         @media (max-width: 768px) {
-            .hero-grid { grid-template-columns: 1fr; text-align: center; }
-            .hero-grid p { margin: 0 auto 40px; }
-            .profile-frame { margin: 0 auto; width: 220px; height: 280px; }
+            section { padding: 60px 0; }
+            .hero h1 { font-size: 2.8rem; }
         }
     </style>
 </head>
@@ -101,123 +115,146 @@
     <div id="particles-js"></div>
 
     <nav>
-        <div class="container nav-inner">
-            <div class="nav-logo">AG.</div>
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/ahmed-ali-ghanem2419" style="color: white; margin-left: 20px;"><i class="fab fa-linkedin-in"></i></a>
-                <a href="mailto:aliahmedali1602419@gmail.com" style="color: white; margin-left: 20px;"><i class="far fa-envelope"></i></a>
-            </div>
+        <div class="container nav-content">
+            <div class="logo">AHMED <span style="color: var(--primary);">GHANEM</span></div>
+            <div style="font-size: 0.75rem; letter-spacing: 2px; color: var(--text-dim); font-weight: 700;">SENIOR ACCOUNTANT</div>
         </div>
     </nav>
 
-    <main>
-        <section class="hero">
-            <div class="container hero-grid">
-                <div class="hero-text">
-                    <span class="label" id="hero-label">Financial Leadership</span>
-                    <h1 id="hero-title">Ahmed <br>Ghanem</h1>
-                    <p id="hero-desc">Senior Accountant specialized in AR Management and Financial Integrity. [span_0](start_span)Over 5 years of driving fiscal excellence across the Saudi and Egyptian markets[span_0](end_span).</p>
-                    <a href="https://wa.me/966565368979" style="color: white; text-decoration: none; border-bottom: 1px solid var(--accent); padding-bottom: 5px; font-weight: 600;">Contact Directly</a>
-                </div>
-                <div class="profile-frame" id="hero-img">
-                    <img src="./profile.jpg" alt="Ahmed Ghanem" class="profile-img">
-                </div>
+    <header class="hero">
+        <div class="container hero-content">
+            <div class="profile-container">
+                <img src="./profile.jpg" alt="Ahmed Ali Ghanem" class="profile-img">
             </div>
-        </section>
+            <h1 id="title">Precision in <br><span style="color: var(--primary);">Finance.</span></h1>
+            [span_0](start_span)<p id="desc">Senior Accountant with 5+ years of experience in Saudi & Egyptian markets, specializing in AR, financial settlements, and Oracle ERP systems[span_0](end_span).</p>
+            <div class="social-links" id="hero-social">
+                <a href="https://www.linkedin.com/in/ahmed-ali-ghanem2419" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://wa.me/966565368979" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="mailto:aliahmedali1602419@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </header>
 
-        <section id="experience">
-            <div class="container">
-                <span class="label">Expertise</span>
-                <h2>Professional Tenure</h2>
-
-                <div class="exp-item">
-                    <div class="exp-header">
-                        <div class="exp-title">Senior Accountant</div>
-                        <div class="exp-date">2022 — Present</div>
-                    </div>
-                    <span class="exp-company">Mezan Abdulhakeem Al-Odheib Auto Maintenance Co. | [span_1](start_span)Riyadh[span_1](end_span)</span>
-                    <ul class="exp-list">
-                        [span_2](start_span)<li>Directed AR & Collections, optimizing cash flow and credit sale management[span_2](end_span).</li>
-                        [span_3](start_span)<li>Orchestrated reconciliations for "Tamara" payments and complex suspense accounts[span_3](end_span).</li>
-                        [span_4](start_span)<li>Executed internal audits of service center logs to ensure pricing compliance[span_4](end_span).</li>
-                        [span_5](start_span)<li>Provided high-level ERP technical support and oversight for billing operations[span_5](end_span).</li>
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Senior Accountant</h3>
+                    <span class="company">Mezan Abdulhakeem Al-Odheib Auto Maintenance Co. | [span_1](start_span)Riyadh[span_1](end_span)</span>
+                    [span_2](start_span)<p style="margin-bottom: 12px; font-weight: 600; font-size: 0.85rem;">Nov 2022 – Present[span_2](end_span)</p>
+                    <ul>
+                        [span_3](start_span)<li>Managed AR & Collections, ensuring optimal cash flow for credit sales[span_3](end_span).</li>
+                        [span_4](start_span)<li>Led reconciliations for "Tamara" payments and complex suspense accounts[span_4](end_span).</li>
+                        [span_5](start_span)<li>Audited daily service center logs to verify customer discounts and compliance[span_5](end_span).</li>
+                        [span_6](start_span)<li>Provided technical ERP support and resolved billing issues for cashiers[span_6](end_span).</li>
                     </ul>
                 </div>
 
-                <div class="exp-item">
-                    <div class="exp-header">
-                        <div class="exp-title">General Accountant</div>
-                        <div class="exp-date">Jan 2022 — Oct 2022</div>
-                    </div>
-                    <span class="exp-company">Qurtoba Clothing Factory | [span_6](start_span)Egypt[span_6](end_span)</span>
-                    <ul class="exp-list">
-                        [span_7](start_span)<li>Streamlined collection processes to maintain healthy organizational liquidity[span_7](end_span).</li>
-                        [span_8](start_span)<li>Maintained general ledger integrity through meticulous daily journal entries[span_8](end_span).</li>
-                        [span_9](start_span)<li>Resolved financial discrepancies via periodic customer account reconciliations[span_9](end_span).</li>
+                <div class="card">
+                    <h3>Accountant</h3>
+                    <span class="company">Qurtoba Clothing Factory | [span_7](start_span)Egypt[span_7](end_span)</span>
+                    [span_8](start_span)<p style="margin-bottom: 12px; font-weight: 600; font-size: 0.85rem;">Jan 2022 – Oct 2022[span_8](end_span)</p>
+                    <ul>
+                        [span_9](start_span)<li>Managed payment follow-ups to ensure liquidity and steady cash flow[span_9](end_span).</li>
+                        [span_10](start_span)<li>Recorded daily journal entries and maintained the general ledger[span_10](end_span).</li>
+                        [span_11](start_span)<li>Performed periodic account reconciliations to resolve discrepancies[span_11](end_span).</li>
                     </ul>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="skills">
-            <div class="container">
-                <span class="label">Competencies</span>
-                <h2>Technical Stack</h2>
-                <div class="skills-grid">
-                    <div class="skill-box">
-                        <h3>Core Accounting</h3>
-                        <ul class="exp-list">
-                            [span_10](start_span)<li>AR & AP Management[span_10](end_span)</li>
-                            [span_11](start_span)<li>VAT & WHT Filing[span_11](end_span)</li>
-                            [span_12](start_span)<li>IFRS Compliance[span_12](end_span)</li>
-                        </ul>
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Expertise</h2>
+            <div class="grid">
+                <div class="card">
+                    <i class="fas fa-microchip" style="font-size: 2rem; color: var(--primary); margin-bottom: 20px; display: block;"></i>
+                    <h3>ERP & Systems</h3>
+                    <div class="skills-container">
+                        [span_12](start_span)<span class="skill-chip">ORACLE Financials[span_12](end_span)</span>
+                        [span_13](start_span)<span class="skill-chip">ZATCA Compliance[span_13](end_span)</span>
+                        [span_14](start_span)<span class="skill-chip">Excel MOS Master[span_14](end_span)</span>
+                        [span_15](start_span)<span class="skill-chip">ERP Reporting[span_15](end_span)</span>
                     </div>
-                    <div class="skill-box">
-                        <h3>Systems</h3>
-                        <ul class="exp-list">
-                            [span_13](start_span)[span_14](start_span)<li>Oracle Financials[span_13](end_span)[span_14](end_span)</li>
-                            [span_15](start_span)<li>ZATCA Platforms[span_15](end_span)</li>
-                            [span_16](start_span)<li>MOS Master (Excel)[span_16](end_span)</li>
-                        </ul>
+                </div>
+                <div class="card">
+                    <i class="fas fa-file-invoice-dollar" style="font-size: 2rem; color: var(--primary); margin-bottom: 20px; display: block;"></i>
+                    <h3>Accounting Core</h3>
+                    <div class="skills-container">
+                        [span_16](start_span)<span class="skill-chip">AR & AP Management[span_16](end_span)</span>
+                        [span_17](start_span)<span class="skill-chip">VAT & WHT Filing[span_17](end_span)</span>
+                        [span_18](start_span)<span class="skill-chip">IFRS Standards[span_18](end_span)</span>
+                        [span_19](start_span)<span class="skill-chip">Bank Reconciliation[span_19](end_span)</span>
+                        [span_20](start_span)<span class="skill-chip">Year-End Closing[span_20](end_span)</span>
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">Education & Certifications</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Bachelor of Commerce</h3>
+                    [span_21](start_span)<p style="color: var(--text-dim); font-size: 0.95rem;">Accounting - Tanta University, Egypt[span_21](end_span)</p>
+                    [span_22](start_span)<p class="company">Class of 2019[span_22](end_span)</p>
+                </div>
+                <div class="card">
+                    <h3>MOS Master 2016</h3>
+                    [span_23](start_span)<p style="color: var(--text-dim); font-size: 0.95rem;">Microsoft Office Specialist Expert Level[span_23](end_span)</p>
+                    [span_24](start_span)<p class="company">Advanced Excel & Data Analysis[span_24](end_span)</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <footer>
         <div class="container">
-            [span_17](start_span)<p>Based in Riyadh, KSA[span_17](end_span)</p>
-            [span_18](start_span)<p style="margin-top: 15px; opacity: 0.5;">Bachelor of Commerce, Accounting - Tanta University, 2019[span_18](end_span)</p>
+            [span_25](start_span)<p style="margin-bottom: 5px;">Riyadh, Kingdom of Saudi Arabia[span_25](end_span)</p>
+            <p style="font-size: 0.75rem;">© 2026 AHMED ALI GHANEM. All Rights Reserved.</p>
         </div>
     </footer>
 
     <script>
-        // Animations: CEO Precision
+        // GSAP Animations
         gsap.registerPlugin(ScrollTrigger);
 
-        const tl = gsap.timeline();
-        tl.from("#hero-label", { opacity: 0, x: -20, duration: 0.8 })
-          .from("#hero-title", { opacity: 0, y: 30, duration: 1 }, "-=0.4")
-          .from("#hero-desc", { opacity: 0, duration: 1 }, "-=0.6")
-          .from("#hero-img", { opacity: 0, scale: 0.9, duration: 1.2, ease: "expo.out" }, "-=0.8");
+        gsap.from("#title", { opacity: 0, y: 50, duration: 1.2, ease: "power4.out" });
+        gsap.from("#desc", { opacity: 0, y: 30, duration: 1.2, delay: 0.3, ease: "power4.out" });
+        gsap.from("#hero-social", { opacity: 0, duration: 1, delay: 0.6 });
 
-        gsap.utils.toArray(".exp-item, .skill-box").forEach(el => {
-            gsap.from(el, {
-                scrollTrigger: { trigger: el, start: "top 90%" },
-                opacity: 0, y: 30, duration: 1, ease: "power2.out"
+        gsap.utils.toArray(".card").forEach(card => {
+            gsap.from(card, {
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top 92%",
+                },
+                opacity: 0,
+                y: 40,
+                duration: 0.8,
+                ease: "power2.out"
             });
         });
 
-        // Background: Subtle Professional Particles
+        // Particles Configuration
         particlesJS("particles-js", {
             "particles": {
-                "number": { "value": 40 },
-                "color": { "value": "#3b82f6" },
+                "number": { "value": 50 },
+                "color": { "value": "#2563eb" },
+                "shape": { "type": "circle" },
                 "opacity": { "value": 0.2 },
-                "size": { "value": 1.5 },
-                "line_linked": { "enable": true, "distance": 150, "color": "#3b82f6", "opacity": 0.1, "width": 1 },
-                "move": { "enable": true, "speed": 0.8 }
+                "size": { "value": 2 },
+                "line_linked": { "enable": true, "distance": 150, "color": "#2563eb", "opacity": 0.1, "width": 1 },
+                "move": { "enable": true, "speed": 1 }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": { "onhover": { "enable": true, "mode": "grab" } }
             }
         });
     </script>
