@@ -1,224 +1,261 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" id="main-html">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahmed Ghanem | Portfolio</title>
-    
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<meta charset="UTF-8">
+<title>Ahmed Ghanem | Senior Accountant</title>
 
-    <style>
-        :root {
-            --primary: #2563eb;
-            --bg: #ffffff;
-            --text-main: #1e293b;
-            --text-dim: #64748b;
-            --card-bg: #f8fafc;
-            --border: #e2e8f0;
-            --btn-text: #ffffff;
-            --shadow: 0 10px 30px rgba(0,0,0,0.05);
-        }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
-        [data-theme="dark"] {
-            --bg: #0f172a;
-            --text-main: #f1f5f9;
-            --text-dim: #94a3b8;
-            --primary: #38bdf8;
-            --card-bg: rgba(30, 41, 59, 0.7);
-            --border: rgba(255,255,255,0.05);
-            --btn-text: #0f172a;
-        }
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-        * { margin: 0; padding: 0; box-sizing: border-box; transition: all 0.3s ease; }
-        
-        html[dir="rtl"] body { font-family: 'Cairo', sans-serif; }
-        html[dir="ltr"] body { font-family: 'Plus Jakarta Sans', sans-serif; }
+<style>
+:root {
+    --main:#22c55e;
+    --bg:#0f172a;
+    --card:#1e293b;
+    --text:#fff;
+}
 
-        body { background-color: var(--bg); color: var(--text-main); overflow-x: hidden; line-height: 1.6; }
+.light {
+    --bg:#f1f5f9;
+    --card:#fff;
+    --text:#000;
+}
 
-        /* Floating Controls */
-        .controls { position: fixed; bottom: 30px; left: 30px; display: flex; flex-direction: column; gap: 10px; z-index: 1000; }
-        .control-btn { width: 55px; height: 55px; border-radius: 50%; background: var(--primary); color: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; box-shadow: 0 5px 15px rgba(0,0,0,0.2); font-weight: bold; font-size: 0.9rem; }
+body {
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    transition:.4s;
+}
 
-        /* Navbar */
-        nav { position: fixed; top: 0; width: 100%; padding: 20px 8%; display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(15px); border-bottom: 1px solid var(--border); z-index: 900; background: rgba(255,255,255,0.01); }
-        .logo { font-weight: 900; color: var(--primary); letter-spacing: 1px; }
+/* HEADER */
+header {
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background:linear-gradient(270deg,#0f172a,#1e293b,#020617);
+    background-size:600% 600%;
+    animation:bgMove 10s infinite;
+}
 
-        /* Hero */
-        .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 120px 20px 60px; }
-        .profile-img { width: 180px; height: 180px; border-radius: 50%; border: 4px solid var(--primary); margin-bottom: 25px; object-fit: cover; box-shadow: var(--shadow); }
-        
-        .hero h1 { font-size: clamp(2.5rem, 8vw, 4rem); font-weight: 900; margin-bottom: 15px; }
-        .hero h1 span { color: var(--primary); }
+@keyframes bgMove {
+    0%{background-position:0%}
+    50%{background-position:100%}
+    100%{background-position:0%}
+}
 
-        /* Experience & Cards */
-        section { padding: 100px 10%; }
-        .section-title { font-size: 2.2rem; margin-bottom: 50px; text-align: center; font-weight: 800; }
-        .timeline-item { padding: 30px; border-inline-start: 5px solid var(--primary); background: var(--card-bg); margin-bottom: 30px; border-radius: 15px; box-shadow: var(--shadow); }
-        
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-        .card { background: var(--card-bg); padding: 30px; border-radius: 20px; border: 1px solid var(--border); transition: 0.4s; }
-        .card:hover { transform: translateY(-10px); border-color: var(--primary); }
+h1 {
+    font-size:55px;
+}
 
-        /* Social Icons */
-        .social-links { display: flex; gap: 15px; margin-top: 30px; flex-wrap: wrap; justify-content: center; }
-        .social-links a { width: 45px; height: 45px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; font-size: 1.3rem; }
+p {
+    color:#94a3b8;
+}
 
-        /* Translation Classes */
-        .lang-en, .lang-ar { display: none; }
-        html[lang="en"] .lang-en { display: block; }
-        html[lang="ar"] .lang-ar { display: block; }
+.btn {
+    padding:12px 25px;
+    margin:10px;
+    background:var(--main);
+    border-radius:30px;
+    color:#fff;
+    text-decoration:none;
+    transition:.3s;
+}
 
-        footer { text-align: center; padding: 60px; border-top: 1px solid var(--border); color: var(--text-dim); }
+.btn:hover {
+    transform:scale(1.1);
+}
 
-        @media (max-width: 768px) { section { padding: 60px 5%; } }
-    </style>
+/* SECTION */
+section {
+    padding:70px 10%;
+}
+
+/* CARD */
+.card {
+    background:var(--card);
+    padding:20px;
+    border-radius:15px;
+    margin:15px 0;
+    transition:.4s;
+}
+
+.card:hover {
+    transform:translateY(-10px) scale(1.02);
+}
+
+/* STATS */
+.stats {
+    display:flex;
+    justify-content:space-around;
+    text-align:center;
+}
+
+.stat h2 {
+    color:var(--main);
+    font-size:40px;
+}
+
+/* TOGGLE */
+.toggle {
+    position:fixed;
+    top:20px;
+    right:20px;
+    cursor:pointer;
+    background:var(--main);
+    padding:10px;
+    border-radius:50%;
+}
+
+/* SCROLL ANIMATION */
+.hidden {
+    opacity:0;
+    transform:translateY(40px);
+    transition:1s;
+}
+
+.show {
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* WHATSAPP */
+.whatsapp {
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#25D366;
+    padding:15px;
+    border-radius:50%;
+    color:#fff;
+    font-size:20px;
+}
+</style>
 </head>
-<body data-theme="light">
 
-    <div class="controls">
-        <button class="control-btn" id="lang-toggle">EN</button>
-        <button class="control-btn" id="theme-toggle"><i class="fas fa-moon"></i></button>
+<body>
+
+<div class="toggle" onclick="toggleMode()">🌙</div>
+
+<header>
+    <h1>Ahmed Ghanem</h1>
+    <p>Turning Financial Data into Smart Business Decisions</p>
+
+    <a href="Ahmed_Ghanem_CV.pdf" download class="btn">Download CV</a>
+    <a href="https://wa.me/966565368979" class="btn">WhatsApp</a>
+</header>
+
+<section class="hidden">
+    <h2>Professional Summary</h2>
+    <div class="card">
+        Senior Accountant with 5+ years of experience across Saudi and Egyptian markets, specializing in AR, reconciliation, and financial accuracy.
+    </div>
+</section>
+
+<section class="hidden">
+    <h2>Key Stats</h2>
+    <div class="stats">
+        <div class="stat"><h2 id="c1">0</h2><p>Years</p></div>
+        <div class="stat"><h2 id="c2">0</h2><p>Transactions</p></div>
+        <div class="stat"><h2 id="c3">0</h2><p>Markets</p></div>
+    </div>
+</section>
+
+<section class="hidden">
+    <h2>Dashboard</h2>
+    <canvas id="chart"></canvas>
+</section>
+
+<section class="hidden">
+    <h2>Experience</h2>
+
+    <div class="card">
+        <h3>Senior Accountant</h3>
+        <p>Mezan Company</p>
+        <ul>
+            <li>Managed credit sales & collections</li>
+            <li>Reconciled Tamara & suspense accounts</li>
+            <li>Audited operations</li>
+        </ul>
     </div>
 
-    <nav>
-        <div class="logo">AHMED ALI GHANEM</div>
-        <div style="font-weight: 800; font-size: 0.8rem; letter-spacing: 1px;">
-            <span class="lang-en">FINANCIAL PROFESSIONAL</span>
-            <span class="lang-ar">محاسب مالي محترف</span>
-        </div>
-    </nav>
+    <div class="card">
+        <h3>Accountant</h3>
+        <p>Qurtoba Factory</p>
+    </div>
+</section>
 
-    <header class="hero">
-        <div data-aos="fade-down">
-            <img src="./profile.jpg" alt="Ahmed Ghanem" class="profile-img">
-            <h1>
-                <span class="lang-en">Ahmed <span>Ghanem</span></span>
-                <span class="lang-ar">أحمد <span>غانم</span></span>
-            </h1>
-            <p style="color: var(--primary); font-weight: 700; font-size: 1.2rem; margin-bottom: 20px;">
-                <span class="lang-en">Senior Accountant | AR Specialist</span>
-                <span class="lang-ar">محاسب أول | أخصائي حسابات مدينين</span>
-            </p>
-            <p style="color: var(--text-dim); max-width: 700px; margin: 0 auto 30px;">
-                <span class="lang-en">Over 5 years of excellence in AR management, financial settlements, and ERP systems (Oracle) across KSA and Egypt.</span>
-                <span class="lang-ar">أكثر من 5 سنوات من التميز في إدارة حسابات المدينين والتسويات المالية وأنظمة ERP (أوراكل) في السعودية ومصر.</span>
-            </p>
-            
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/ahmed-ali-ghanem2419" target="_blank" style="background:#0077b5;"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://wa.me/966565368979" target="_blank" style="background:#25d366;"><i class="fab fa-whatsapp"></i></a>
-                <a href="https://x.com/Ahmed1602419" target="_blank" style="background:#000;"><i class="fab fa-x-twitter"></i></a>
-                <a href="https://www.tiktok.com/@ahmedalighanem70" target="_blank" style="background:#000;"><i class="fab fa-tiktok"></i></a>
-            </div>
-        </div>
-    </header>
+<section class="hidden">
+    <h2>Skills</h2>
+    <div class="card">
+        Oracle ERP • Excel • VAT • GL • Reconciliation
+    </div>
+</section>
 
-    <section id="experience">
-        <h2 class="section-title">
-            <span class="lang-en">Career <span>Experience</span></span>
-            <span class="lang-ar">المسار <span>المهني</span></span>
-        </h2>
-        
-        <div class="timeline-item" data-aos="fade-up">
-            <h3 class="lang-en">Senior Accountant</h3>
-            <h3 class="lang-ar">محاسب أول</h3>
-            <p style="color: var(--primary); font-weight: 700; margin: 5px 0 15px;">
-                <span class="lang-en">Mezan Abdulhakeem Al-Odheib | Riyadh | 2022 - Present</span>
-                <span class="lang-ar">ميزان عبد الحكيم العضيب | الرياض | 2022 - الآن</span>
-            </p>
-            <ul style="padding-inline-start: 20px; color: var(--text-dim);">
-                [span_7](start_span)<li class="lang-en">Managed AR, collections, and Tamara gateway reconciliations.[span_7](end_span)</li>
-                [span_8](start_span)<li class="lang-ar">إدارة حسابات المدينين، التحصيل، وتسويات بوابة "تمارة".[span_8](end_span)</li>
-                [span_9](start_span)<li class="lang-en">Audited service center logs and verified customer discounts.[span_9](end_span)</li>
-                [span_10](start_span)<li class="lang-ar">تدقيق سجلات مركز الخدمة والتحقق من خصومات العملاء.[span_10](end_span)</li>
-                [span_11](start_span)<li class="lang-en">Provided ERP technical support for billing and journal entries.[span_11](end_span)</li>
-                [span_12](start_span)<li class="lang-ar">تقديم الدعم الفني لنظام ERP للفواتير والقيود المحاسبية.[span_12](end_span)</li>
-            </ul>
-        </div>
+<section class="hidden">
+    <h2>Contact</h2>
+    <div class="card">
+        📧 aliahmedali1602419@gmail.com <br>
+        📞 0565368979
+    </div>
+</section>
 
-        <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
-            <h3 class="lang-en">Accountant</h3>
-            <h3 class="lang-ar">محاسب</h3>
-            <p style="color: var(--primary); font-weight: 700; margin: 5px 0 15px;">
-                <span class="lang-en">Qurtoba Clothing Factory | Egypt | 2022</span>
-                <span class="lang-ar">مصنع قرطبة للملابس | مصر | 2022</span>
-            </p>
-            <ul style="padding-inline-start: 20px; color: var(--text-dim);">
-                [span_13](start_span)<li class="lang-en">Managed daily journal entries and customer reconciliations.[span_13](end_span)</li>
-                [span_14](start_span)<li class="lang-ar">إدارة القيود اليومية وتسويات حسابات العملاء.[span_14](end_span)</li>
-            </ul>
-        </div>
-    </section>
+<div class="whatsapp">💬</div>
 
-    <section id="skills" style="background: var(--card-bg);">
-        <h2 class="section-title">
-            <span class="lang-en">Technical <span>Mastery</span></span>
-            <span class="lang-ar">الخبرات <span>التقنية</span></span>
-        </h2>
-        <div class="grid">
-            <div class="card" data-aos="zoom-in">
-                <i class="fas fa-server" style="font-size: 2rem; color: var(--primary); margin-bottom: 20px;"></i>
-                <h3 class="lang-en">Financial Systems</h3><h3 class="lang-ar">الأنظمة المالية</h3>
-                [span_15](start_span)<p class="lang-en">Oracle ERP Specialist[span_15](end_span)[span_16](start_span), MOS Master (Expert Excel)[span_16](end_span)[span_17](start_span), and ZATCA compliance.[span_17](end_span)</p>
-                [span_18](start_span)<p class="lang-ar">أخصائي أوراكل[span_18](end_span)[span_19](start_span)، خبير إكسيل (MOS Master)[span_19](end_span)[span_20](start_span)، والامتثال لمنصة زاتكا.[span_20](end_span)</p>
-            </div>
-            <div class="card" data-aos="zoom-in" data-aos-delay="200">
-                <i class="fas fa-file-invoice-dollar" style="font-size: 2rem; color: var(--primary); margin-bottom: 20px;"></i>
-                <h3 class="lang-en">Accounting Core</h3><h3 class="lang-ar">جوهر المحاسبة</h3>
-                [span_21](start_span)<p class="lang-en">VAT/WHT Filing[span_21](end_span)[span_22](start_span), Bank Reconciliations, and Year-End Closing.[span_22](end_span)</p>
-                [span_23](start_span)<p class="lang-ar">إقرارات ضريبة القيمة المضافة[span_23](end_span)[span_24](start_span)، التسويات البنكية، والإقفال السنوي.[span_24](end_span)</p>
-            </div>
-        </div>
-    </section>
+<script>
 
-    <section id="education">
-        <h2 class="section-title">
-            <span class="lang-en">Education & <span>Certs</span></span>
-            <span class="lang-ar">التعليم <span>والشهادات</span></span>
-        </h2>
-        <div class="grid">
-            <div class="card" data-aos="fade-up">
-                <h4 class="lang-en">Bachelor of Commerce</h4><h4 class="lang-ar">بكالوريوس التجارة</h4>
-                <p class="lang-en">Accounting - Tanta University, Egypt | [span_25](start_span)2019[span_25](end_span)</p>
-                <p class="lang-ar">شعبة المحاسبة - جامعة طنطا، مصر | [span_26](start_span)2019[span_26](end_span)</p>
-            </div>
-            <div class="card" data-aos="fade-up" data-aos-delay="200">
-                <h4 class="lang-en">MOS Master 2016</h4><h4 class="lang-ar">شهادة MOS Master</h4>
-                [span_27](start_span)<p class="lang-en">Microsoft Office Specialist Expert Level.[span_27](end_span)</p>
-                [span_28](start_span)<p class="lang-ar">أخصائي ميكروسوفت أوفيس (مستوى خبير).[span_28](end_span)</p>
-            </div>
-        </div>
-    </section>
+/* DARK MODE */
+function toggleMode(){
+    document.body.classList.toggle("light");
+}
 
-    <footer>
-        <p class="lang-en">© 2026 AHMED ALI GHANEM | [span_29](start_span)Riyadh, KSA[span_29](end_span)</p>
-        <p class="lang-ar">© 2026 أحمد علي غانم | [span_30](start_span)الرياض، السعودية[span_30](end_span)</p>
-    </footer>
+/* SCROLL ANIMATION */
+const observer = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("show");
+        }
+    });
+});
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({ duration: 1000, once: true });
+document.querySelectorAll(".hidden").forEach(el=>observer.observe(el));
 
-        const langToggle = document.getElementById('lang-toggle');
-        const themeToggle = document.getElementById('theme-toggle');
-        const html = document.getElementById('main-html');
-        const body = document.body;
+/* COUNTER */
+function counter(id, target){
+    let count=0;
+    let interval=setInterval(()=>{
+        count+=Math.ceil(target/50);
+        if(count>=target){
+            count=target;
+            clearInterval(interval);
+        }
+        document.getElementById(id).innerText=count;
+    },30);
+}
 
-        langToggle.addEventListener('click', () => {
-            const isEn = html.getAttribute('lang') === 'en';
-            html.setAttribute('lang', isEn ? 'ar' : 'en');
-            html.setAttribute('dir', isEn ? 'rtl' : 'ltr');
-            langToggle.innerText = isEn ? 'EN' : 'عربي';
-        });
+counter("c1",5);
+counter("c2",1000);
+counter("c3",2);
 
-        themeToggle.addEventListener('click', () => {
-            const isDark = body.getAttribute('data-theme') === 'dark';
-            body.setAttribute('data-theme', isDark ? 'light' : 'dark');
-            themeToggle.innerHTML = isDark ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
-        });
-    </script>
+/* CHART */
+new Chart(document.getElementById("chart"),{
+    type:"line",
+    data:{
+        labels:["Jan","Feb","Mar","Apr","May"],
+        datasets:[{
+            label:"Cash Flow",
+            data:[10,20,15,30,25],
+            borderColor:"#22c55e"
+        }]
+    }
+});
+
+</script>
+
 </body>
 </html>
