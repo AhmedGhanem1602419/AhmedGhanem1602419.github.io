@@ -3,292 +3,225 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahmed Ghanem | Portfolio</title>
+    <title>Ahmed Ghanem | Financial Expert</title>
     
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
     <style>
         :root {
             --primary: #2563eb;
-            --primary-light: #dbeafe;
-            --bg: #ffffff;
+            --bg: #0f172a; /* تم اختيار الداكن كأساسي للفخامة */
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --text-main: #f1f5f9;
+            --text-dim: #94a3b8;
+            --border: rgba(255, 255, 255, 0.05);
+        }
+
+        [data-theme="light"] {
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
             --text-main: #0f172a;
             --text-dim: #64748b;
-            --card-bg: #ffffff;
-            --border: #f1f5f9;
-            --shadow: 0 20px 40px rgba(0,0,0,0.05);
-            --nav-bg: rgba(255, 255, 255, 0.8);
+            --border: #e2e8f0;
         }
 
-        [data-theme="dark"] {
-            --bg: #0b0f1a;
-            --text-main: #f8fafc;
-            --text-dim: #94a3b8;
-            --primary: #38bdf8;
-            --primary-light: rgba(56, 189, 248, 0.1);
-            --card-bg: #161e2d;
-            --border: #1e293b;
-            --shadow: 0 20px 40px rgba(0,0,0,0.3);
-            --nav-bg: rgba(11, 15, 26, 0.8);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none !important; }
         
         body { 
             background-color: var(--bg); 
             color: var(--text-main); 
-            line-height: 1.7; 
+            font-family: 'Cairo', sans-serif;
             overflow-x: hidden;
-            font-family: 'Cairo', 'Plus Jakarta Sans', sans-serif;
         }
 
-        /* Utility Classes */
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 25px; }
-        .accent { color: var(--primary); }
-
-        /* Navigation */
-        nav { 
-            position: fixed; top: 0; width: 100%; padding: 15px 0; 
-            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-            z-index: 1000; border-bottom: 1px solid var(--border);
-            background: var(--nav-bg);
+        /* Custom Cursor */
+        #cursor {
+            width: 20px; height: 20px;
+            background: var(--primary);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            transition: transform 0.1s;
         }
-        nav .container { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-weight: 800; font-size: 1.2rem; letter-spacing: -0.5px; text-transform: uppercase; }
 
-        /* Floating Controls */
-        .controls { position: fixed; bottom: 30px; left: 30px; display: flex; flex-direction: column; gap: 12px; z-index: 1100; }
-        .control-btn { 
-            width: 50px; height: 50px; border-radius: 16px; 
-            background: var(--card-bg); color: var(--primary); 
-            display: flex; align-items: center; justify-content: center; 
-            cursor: pointer; border: 1px solid var(--border); box-shadow: var(--shadow); 
-            font-weight: bold;
+        /* Background Particles */
+        #particles-js {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
         }
-        .control-btn:hover { transform: scale(1.1); background: var(--primary); color: white; }
+
+        /* Modern Glassmorphism Nav */
+        nav {
+            position: fixed; top: 0; width: 100%;
+            padding: 20px 0; z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        .flex-between { display: flex; justify-content: space-between; align-items: center; }
 
         /* Hero Section */
-        .hero { 
-            min-height: 100vh; display: flex; align-items: center; justify-content: center; 
-            padding-top: 80px; text-align: center;
-            background: radial-gradient(circle at top right, var(--primary-light), transparent 40%);
-        }
-        .profile-wrapper { position: relative; display: inline-block; margin-bottom: 30px; }
-        .profile-img { 
-            width: 160px; height: 160px; border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; 
-            border: 4px solid var(--primary); object-fit: cover; animation: morph 8s ease-in-out infinite;
-        }
-        @keyframes morph {
-            0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
-            50% { border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; }
+        .hero {
+            height: 100vh;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center;
         }
 
-        .hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 900; line-height: 1.1; margin-bottom: 20px; }
-        .hero p.lead { font-size: 1.2rem; color: var(--text-dim); max-width: 650px; margin: 0 auto 35px; }
-
-        /* Sections */
-        section { padding: 100px 0; }
-        .section-header { text-align: center; margin-bottom: 60px; }
-        .section-header h2 { font-size: 2.5rem; font-weight: 800; margin-bottom: 15px; }
-        .section-header .underline { width: 60px; height: 5px; background: var(--primary); margin: 0 auto; border-radius: 10px; }
-
-        /* Experience Timeline */
-        .timeline { position: relative; max-width: 800px; margin: 0 auto; }
-        .timeline-item { 
-            background: var(--card-bg); padding: 35px; border-radius: 24px; 
-            margin-bottom: 30px; border: 1px solid var(--border); box-shadow: var(--shadow);
-            position: relative;
+        .hero h1 {
+            font-size: clamp(3rem, 10vw, 5rem);
+            font-weight: 900;
+            background: linear-gradient(to right, var(--primary), #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            opacity: 0; transform: translateY(30px);
         }
-        .timeline-item::before {
-            content: ''; position: absolute; top: 0; bottom: 0; right: -15px; 
-            width: 4px; background: var(--primary); border-radius: 10px;
-        }
-        html[dir="ltr"] .timeline-item::before { right: auto; left: -15px; }
 
-        /* Cards Grid */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .card { 
-            background: var(--card-bg); padding: 40px; border-radius: 24px; 
-            border: 1px solid var(--border); box-shadow: var(--shadow);
-            height: 100%;
+        /* Experience Cards */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 40px;
+            border-radius: 24px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(5px);
+            opacity: 0;
+            transform: translateX(-50px);
         }
-        .card i { font-size: 2.5rem; margin-bottom: 25px; display: block; color: var(--primary); }
-        .card h3 { margin-bottom: 15px; font-weight: 700; }
 
-        /* Social Links */
-        .social-links { display: flex; gap: 12px; justify-content: center; }
-        .social-links a { 
-            width: 50px; height: 50px; border-radius: 14px; 
-            display: flex; align-items: center; justify-content: center; 
-            text-decoration: none; font-size: 1.2rem; color: #fff;
+        /* Controls */
+        .controls {
+            position: fixed; bottom: 30px; left: 30px;
+            display: flex; flex-direction: column; gap: 15px; z-index: 1001;
         }
-        .social-links a:hover { transform: translateY(-5px) rotate(8deg); }
+        .btn {
+            width: 50px; height: 50px; border-radius: 12px;
+            background: var(--primary); color: white;
+            border: none; font-weight: bold; cursor: pointer !important;
+        }
 
-        /* Language Switching */
         [lang="en"] .lang-ar, [lang="ar"] .lang-en { display: none; }
-
-        footer { text-align: center; padding: 50px 0; border-top: 1px solid var(--border); color: var(--text-dim); font-size: 0.9rem; }
-
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.8rem; }
-            section { padding: 70px 0; }
-        }
     </style>
 </head>
-<body data-theme="light">
+<body data-theme="dark">
+
+    <div id="cursor"></div>
+    <div id="particles-js"></div>
 
     <nav>
-        <div class="container">
-            <div class="logo">Ahmed <span class="accent">Ghanem</span></div>
-            <div style="font-weight: 700; font-size: 0.85rem;">
-                <span class="lang-en">FINANCIAL PROFESSIONAL</span>
-                <span class="lang-ar">محاسب مالي محترف</span>
-            </div>
+        <div class="container flex-between">
+            <div style="font-weight: 900; font-size: 1.4rem;">AG<span style="color: var(--primary);">.</span></div>
+            <div class="lang-en" style="font-size: 0.8rem; font-weight: 600;">FINANCIAL STRATEGIST</div>
+            <div class="lang-ar" style="font-size: 0.8rem; font-weight: 600;">خبير الاستراتيجيات المالية</div>
         </div>
     </nav>
 
     <div class="controls">
-        <button class="control-btn" id="lang-toggle" title="Switch Language">EN</button>
-        <button class="control-btn" id="theme-toggle" title="Toggle Theme"><i class="fas fa-moon"></i></button>
+        <button class="btn" id="lang-toggle">EN</button>
+        <button class="btn" id="theme-toggle"><i class="fas fa-sun"></i></button>
     </div>
 
     <header class="hero">
-        <div class="container" data-aos="fade-up">
-            <div class="profile-wrapper">
-                <img src="./profile.jpg" alt="Ahmed Ghanem" class="profile-img">
-            </div>
-            <h1>
-                <span class="lang-en">Strategic <span>Accounting</span> Expert</span>
-                <span class="lang-ar">خبير <span>المحاسبة</span> الاستراتيجية</span>
+        <div class="container">
+            <h1 id="hero-title">
+                <span class="lang-en">Ahmed Ghanem</span>
+                <span class="lang-ar">أحمد غانم</span>
             </h1>
-            <p class="lead">
-                <span class="lang-en">Senior Accountant specialized in AR Management, Financial Reconciliations, and Oracle ERP systems with 5+ years of driving financial accuracy in KSA and Egypt.</span>
-                <span class="lang-ar">محاسب أول متخصص في إدارة حسابات المدينين، التسويات المالية، وأنظمة Oracle ERP مع خبرة تزيد عن 5 سنوات في تعزيز الدقة المالية في السعودية ومصر.</span>
+            <p id="hero-p" style="font-size: 1.2rem; color: var(--text-dim); margin-top: 20px; opacity: 0;">
+                <span class="lang-en">Turning Financial Data into Strategic Insights</span>
+                <span class="lang-ar">تحويل البيانات المالية إلى رؤى استراتيجية</span>
             </p>
-            
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/ahmed-ali-ghanem2419" target="_blank" style="background:#0077b5;"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://wa.me/966565368979" target="_blank" style="background:#25d366;"><i class="fab fa-whatsapp"></i></a>
-                <a href="https://x.com/Ahmed1602419" target="_blank" style="background:#000;"><i class="fab fa-x-twitter"></i></a>
-                <a href="https://www.tiktok.com/@ahmedalighanem70" target="_blank" style="background:#ee1d52;"><i class="fab fa-tiktok"></i></a>
-            </div>
         </div>
     </header>
 
-    <section id="experience">
+    <section style="padding: 100px 0;">
         <div class="container">
-            <div class="section-header">
-                <h2 class="lang-en">Professional <span class="accent">Journey</span></h2>
-                <h2 class="lang-ar">المسار <span class="accent">المهني</span></h2>
-                <div class="underline"></div>
+            <div class="card experience-card">
+                <h3 class="lang-en">Senior Accountant | Riyadh</h3>
+                <h3 class="lang-ar">محاسب أول | الرياض</h3>
+                <p style="color: var(--primary); margin: 10px 0;">2022 - Present</p>
+                <p class="lang-en" style="color: var(--text-dim);">Expertly managing AR and Tamara Gateway reconciliations using Oracle ERP.</p>
+                <p class="lang-ar" style="color: var(--text-dim);">إدارة احترافية لحسابات المدينين وتسويات بوابة تمارة باستخدام نظام Oracle.</p>
             </div>
             
-            <div class="timeline">
-                <div class="timeline-item" data-aos="fade-right">
-                    <h3 class="lang-en">Senior Accountant</h3>
-                    <h3 class="lang-ar">محاسب أول</h3>
-                    <p class="accent" style="font-weight: 700; margin-bottom: 15px;">
-                        <span class="lang-en">Mezan Abdulhakeem Al-Odheib | Riyadh | 2022 - Present</span>
-                        <span class="lang-ar">ميزان عبد الحكيم العضيب | الرياض | 2022 - الآن</span>
-                    </p>
-                    <ul style="padding-inline-start: 20px; color: var(--text-dim);">
-                        <li class="lang-en">Optimized AR processes and managed complex Tamara gateway reconciliations.</li>
-                        <li class="lang-ar">تطوير عمليات حسابات المدينين وإدارة تسويات بوابة "تمارة" المعقدة.</li>
-                        <li class="lang-en">Led internal auditing for service center logs ensuring 100% discount accuracy.</li>
-                        <li class="lang-ar">قيادة التدقيق الداخلي لسجلات مراكز الخدمة لضمان دقة الخصومات بنسبة 100%.</li>
-                    </ul>
-                </div>
-
-                <div class="timeline-item" data-aos="fade-right" data-aos-delay="200">
-                    <h3 class="lang-en">General Accountant</h3>
-                    <h3 class="lang-ar">محاسب عام</h3>
-                    <p class="accent" style="font-weight: 700; margin-bottom: 15px;">
-                        <span class="lang-en">Qurtoba Clothing Factory | Egypt | 2022</span>
-                        <span class="lang-ar">مصنع قرطبة للملابس | مصر | 2022</span>
-                    </p>
-                    <ul style="padding-inline-start: 20px; color: var(--text-dim);">
-                        <li class="lang-en">Standardized daily journal entries and streamlined customer statement reconciliations.</li>
-                        <li class="lang-ar">توحيد معايير القيود اليومية وتحسين عمليات مطابقة حسابات العملاء.</li>
-                    </ul>
-                </div>
+            <div class="card experience-card">
+                <h3 class="lang-en">Financial Mastery</h3>
+                <h3 class="lang-ar">الإتقان المالي</h3>
+                <p class="lang-en" style="color: var(--text-dim);">Advanced Excel (MOS Master) & ZATCA E-Invoicing specialist.</p>
+                <p class="lang-ar" style="color: var(--text-dim);">خبير إكسيل متقدم (MOS Master) وأخصائي الفواتير الإلكترونية (ZATCA).</p>
             </div>
         </div>
     </section>
 
-    <section id="skills" style="background: var(--primary-light);">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="lang-en">Core <span class="accent">Expertise</span></h2>
-                <h2 class="lang-ar">الخبرات <span class="accent">الأساسية</span></h2>
-                <div class="underline"></div>
-            </div>
-            <div class="grid">
-                <div class="card" data-aos="zoom-in">
-                    <i class="fas fa-chart-line"></i>
-                    <h3 class="lang-en">ERP & Systems</h3><h3 class="lang-ar">الأنظمة والـ ERP</h3>
-                    <p class="lang-en" style="color: var(--text-dim);">Expert in Oracle ERP, ZATCA e-invoicing compliance, and MOS Master level Excel for financial modeling.</p>
-                    <p class="lang-ar" style="color: var(--text-dim);">خبير في Oracle ERP، الامتثال للفاتورة الإلكترونية (ZATCA)، ومستوى MOS Master في إكسيل للنمذجة المالية.</p>
-                </div>
-                <div class="card" data-aos="zoom-in" data-aos-delay="200">
-                    <i class="fas fa-balance-scale"></i>
-                    <h3 class="lang-en">Financial Control</h3><h3 class="lang-ar">الرقابة المالية</h3>
-                    <p class="lang-en" style="color: var(--text-dim);">Specialized in VAT/WHT filing, bank reconciliations, and executing precise year-end closing procedures.</p>
-                    <p class="lang-ar" style="color: var(--text-dim);">متخصص في إقرارات الضريبة (VAT/WHT)، التسويات البنكية، وتنفيذ إجراءات الإقفال السنوي بدقة.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p class="lang-en">© 2026 Ahmed Ali Ghanem | Based in Riyadh, KSA</p>
-            <p class="lang-ar">© 2026 أحمد علي غانم | الرياض، المملكة العربية السعودية</p>
-        </div>
-    </footer>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        AOS.init({ duration: 800, once: true });
-
-        const langToggle = document.getElementById('lang-toggle');
-        const themeToggle = document.getElementById('theme-toggle');
-        const html = document.getElementById('main-html');
-        const body = document.body;
-
-        // Optimized Language Toggle
-        langToggle.addEventListener('click', () => {
-            const currentLang = html.getAttribute('lang');
-            const newLang = currentLang === 'en' ? 'ar' : 'en';
-            const newDir = newLang === 'ar' ? 'rtl' : 'ltr';
-            
-            html.setAttribute('lang', newLang);
-            html.setAttribute('dir', newDir);
-            langToggle.innerText = newLang === 'en' ? 'AR' : 'EN';
-            
-            // Re-initialize AOS to handle direction change animations
-            AOS.refresh();
+        // 1. Cursor Follower
+        const cursor = document.getElementById('cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
         });
 
-        // Optimized Theme Toggle
-        themeToggle.addEventListener('click', () => {
-            const isDark = body.getAttribute('data-theme') === 'dark';
-            body.setAttribute('data-theme', isDark ? 'light' : 'dark');
-            themeToggle.innerHTML = isDark ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+        // 2. GSAP Animations (The "Magic")
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero Animation
+        gsap.to("#hero-title", { opacity: 1, y: 0, duration: 1.5, ease: "expo.out" });
+        gsap.to("#hero-p", { opacity: 1, delay: 0.5, duration: 1 });
+
+        // Cards Animation on Scroll
+        gsap.utils.toArray(".experience-card").forEach(card => {
+            gsap.to(card, {
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top 85%",
+                },
+                opacity: 1,
+                x: 0,
+                duration: 1,
+                ease: "power2.out"
+            });
         });
 
-        // Scroll Effect for Navbar
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 50) {
-                nav.style.padding = '10px 0';
-                nav.style.boxShadow = 'var(--shadow)';
-            } else {
-                nav.style.padding = '15px 0';
-                nav.style.boxShadow = 'none';
+        // 3. Particles Configuration
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 80 },
+                "color": { "value": "#2563eb" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.5 },
+                "size": { "value": 3 },
+                "line_linked": { "enable": true, "distance": 150, "color": "#2563eb", "opacity": 0.2, "width": 1 },
+                "move": { "enable": true, "speed": 2 }
+            },
+            "interactivity": {
+                "events": { "onhover": { "enable": true, "mode": "grab" } }
             }
         });
+
+        // 4. Logic (Lang & Theme)
+        const langToggle = document.getElementById('lang-toggle');
+        const html = document.getElementById('main-html');
+        langToggle.onclick = () => {
+            const isAr = html.getAttribute('lang') === 'ar';
+            html.setAttribute('lang', isAr ? 'en' : 'ar');
+            html.setAttribute('dir', isAr ? 'ltr' : 'rtl');
+            langToggle.innerText = isAr ? 'AR' : 'EN';
+        };
+
+        const themeToggle = document.getElementById('theme-toggle');
+        themeToggle.onclick = () => {
+            const isDark = document.body.getAttribute('data-theme') === 'dark';
+            document.body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+            themeToggle.innerHTML = isDark ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+        };
     </script>
 </body>
 </html>
