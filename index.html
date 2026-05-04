@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahmed Ghanem | Senior Accountant</title>
+    <title>Ahmed Ghanem | Financial Insights & Portfolio</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -34,7 +34,7 @@
 
         .hero { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; }
         .profile-container {
-            width: 180px; height: 180px; margin: 0 auto 30px; padding: 5px;
+            width: 160px; height: 160px; margin: 0 auto 30px; padding: 5px;
             background: linear-gradient(45deg, var(--primary), #60a5fa);
             border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
             animation: morph 8s ease-in-out infinite;
@@ -46,28 +46,26 @@
             50% { border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; }
         }
 
-        .hero h1 { font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 800; line-height: 1.1; margin-bottom: 15px; }
+        .hero h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 15px; }
         .hero p { color: var(--text-dim); font-size: 1.1rem; max-width: 650px; margin: 0 auto 30px; }
 
-        section { padding: 100px 0; border-bottom: 1px solid var(--border); }
-        .section-title { font-size: 2.2rem; font-weight: 800; margin-bottom: 50px; }
+        section { padding: 80px 0; border-bottom: 1px solid var(--border); }
+        .section-title { font-size: 2rem; font-weight: 800; margin-bottom: 40px; }
+        .label { color: var(--primary); text-transform: uppercase; letter-spacing: 2px; font-size: 0.75rem; font-weight: 700; margin-bottom: 10px; display: block; }
 
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-        .card { background: var(--card-bg); border: 1px solid var(--border); padding: 40px; border-radius: 24px; transition: 0.4s; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+        .card { background: var(--card-bg); border: 1px solid var(--border); padding: 35px; border-radius: 20px; transition: 0.4s; }
         .card:hover { border-color: var(--primary); transform: translateY(-10px); }
-        .company { color: var(--primary); font-weight: 700; margin-bottom: 15px; display: block; }
-        
-        ul { list-style: none; color: var(--text-dim); font-size: 0.9rem; }
-        li { margin-bottom: 10px; padding-left: 20px; position: relative; }
-        li::before { content: '→'; position: absolute; left: 0; color: var(--primary); font-weight: bold; }
 
-        .skills-container { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
-        .skill-chip { 
-            background: rgba(37, 99, 235, 0.1); border: 1px solid var(--primary);
-            color: var(--text-main); padding: 6px 16px; border-radius: 50px; font-size: 0.85rem;
-        }
+        /* Blog Specific Styles */
+        .blog-card { display: flex; flex-direction: column; height: 100%; }
+        .blog-date { font-size: 0.8rem; color: var(--primary); margin-bottom: 10px; font-weight: 600; }
+        .blog-card h3 { font-size: 1.25rem; margin-bottom: 15px; line-height: 1.4; }
+        .blog-excerpt { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 20px; flex-grow: 1; }
+        .read-more { font-weight: 700; font-size: 0.85rem; text-decoration: none; color: var(--text-main); display: flex; align-items: center; gap: 8px; }
+        .read-more:hover { color: var(--primary); }
 
-        footer { padding: 60px 0; text-align: center; color: var(--text-dim); }
+        footer { padding: 40px 0; text-align: center; color: var(--text-dim); font-size: 0.85rem; }
     </style>
 </head>
 <body>
@@ -76,8 +74,8 @@
 
     <nav>
         <div class="container nav-content">
-            <div class="logo">AHMED <span style="color: var(--primary);">GHANEM</span></div>
-            <div style="font-size: 0.75rem; letter-spacing: 2px; color: var(--text-dim);">SENIOR ACCOUNTANT</div>
+            <div class="logo">AG<span style="color: var(--primary);">.</span></div>
+            <div style="font-size: 0.7rem; letter-spacing: 1px; color: var(--text-dim); font-weight: 800;">FINANCIAL STRATEGY</div>
         </div>
     </nav>
 
@@ -86,9 +84,9 @@
             <div class="profile-container">
                 <img src="./profile.jpg" alt="Ahmed Ali Ghanem" class="profile-img">
             </div>
-            <h1>Financial <span style="color: var(--primary);">Excellence.</span></h1>
-            <p>Senior Accountant with 5+ years of experience in AR Management, Financial Settlements, and Oracle ERP across KSA and Egypt.</p>
-            <div style="display: flex; justify-content: center; gap: 20px; font-size: 1.5rem;">
+            <h1>Ahmed <span style="color: var(--primary);">Ghanem</span></h1>
+            [span_5](start_span)<p>Senior Accountant[span_5](end_span) [span_6](start_span)specialized in Accounts Receivable[span_6](end_span)[span_7](start_span), financial auditing[span_7](end_span)[span_8](start_span), and Oracle ERP systems[span_8](end_span). [span_9](start_span)[span_10](start_span)Bridging financial data with strategic growth[span_9](end_span)[span_10](end_span).</p>
+            <div style="display: flex; justify-content: center; gap: 20px; font-size: 1.3rem;">
                 <a href="https://www.linkedin.com/in/ahmed-ali-ghanem2419" target="_blank" style="color: white;"><i class="fab fa-linkedin"></i></a>
                 <a href="https://wa.me/966565368979" target="_blank" style="color: white;"><i class="fab fa-whatsapp"></i></a>
                 <a href="mailto:aliahmedali1602419@gmail.com" style="color: white;"><i class="fas fa-envelope"></i></a>
@@ -96,59 +94,49 @@
         </div>
     </header>
 
-    <section id="experience">
+    <section id="blog">
         <div class="container">
-            <h2 class="section-title">Professional Experience</h2>
+            <span class="label">Knowledge Sharing</span>
+            <h2 class="section-title">Financial Insights</h2>
             <div class="grid">
-                <div class="card">
-                    <h3>Senior Accountant</h3>
-                    <span class="company">Mezan Abdulhakeem Al-Odheib | [span_3](start_span)Riyadh[span_3](end_span)</span>
-                    [span_4](start_span)<p style="margin-bottom: 12px; font-weight: 600;">Nov 2022 – Present[span_4](end_span)</p>
-                    <ul>
-                        [span_5](start_span)<li>Managed AR, collections, and Tamara gateway reconciliations[span_5](end_span).</li>
-                        [span_6](start_span)<li>Audited service center logs and verified customer discounts[span_6](end_span).</li>
-                        [span_7](start_span)<li>Provided ERP technical support and resolved billing issues[span_7](end_span).</li>
-                        [span_8](start_span)<li>Overseas fleet and employee vehicle maintenance settlements[span_8](end_span).</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h3>Accountant</h3>
-                    <span class="company">Qurtoba Clothing Factory | [span_9](start_span)Egypt[span_9](end_span)</span>
-                    [span_10](start_span)<p style="margin-bottom: 12px; font-weight: 600;">Jan 2022 – Oct 2022[span_10](end_span)</p>
-                    <ul>
-                        [span_11](start_span)<li>Managed collection and customer payment follow-ups[span_11](end_span).</li>
-                        [span_12](start_span)<li>Maintained general ledger and daily journal entries[span_12](end_span).</li>
-                        [span_13](start_span)<li>Performed periodic customer account reconciliations[span_13](end_span).</li>
-                    </ul>
-                </div>
+                <article class="card blog-card">
+                    <span class="blog-date">May 2026</span>
+                    [span_11](start_span)[span_12](start_span)<h3>Navigating Tamara Gateway Reconciliations[span_11](end_span)[span_12](end_span)</h3>
+                    [span_13](start_span)[span_14](start_span)<p class="blog-excerpt">Insights into managing complex payment gateways in the Saudi market and ensuring 100% data integrity[span_13](end_span)[span_14](end_span).</p>
+                    <a href="#" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
+                </article>
+
+                <article class="card blog-card">
+                    <span class="blog-date">April 2026</span>
+                    [span_15](start_span)<h3>Advanced Excel for Modern Auditors[span_15](end_span)</h3>
+                    [span_16](start_span)<p class="blog-excerpt">How MOS Master techniques can streamline audit logs and automate complex journal entries[span_16](end_span).</p>
+                    <a href="#" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
+                </article>
+
+                <article class="card blog-card">
+                    <span class="blog-date">March 2026</span>
+                    [span_17](start_span)<h3>IFRS Compliance in Retail Markets[span_17](end_span)</h3>
+                    [span_18](start_span)[span_19](start_span)<p class="blog-excerpt">Understanding the impact of international standards on AR and inventory management in Egypt and KSA[span_18](end_span)[span_19](end_span).</p>
+                    <a href="#" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
+                </article>
             </div>
         </div>
     </section>
 
-    <section id="skills">
+    <section id="experience">
         <div class="container">
-            <h2 class="section-title">Core Competencies</h2>
+            <span class="label">Career Track</span>
+            <h2 class="section-title">Professional Journey</h2>
             <div class="grid">
                 <div class="card">
-                    <i class="fas fa-server" style="font-size: 2rem; color: var(--primary); margin-bottom: 20px; display: block;"></i>
-                    <h3>Technical Systems</h3>
-                    <div class="skills-container">
-                        [span_14](start_span)<span class="skill-chip">Oracle ERP[span_14](end_span)</span>
-                        [span_15](start_span)<span class="skill-chip">ZATCA Compliance[span_15](end_span)</span>
-                        [span_16](start_span)<span class="skill-chip">MOS Master 2016[span_16](end_span)</span>
-                        [span_17](start_span)<span class="skill-chip">Advanced Excel[span_17](end_span)</span>
-                    </div>
+                    [span_20](start_span)<h3 style="font-size: 1.1rem; margin-bottom: 5px;">Senior Accountant[span_20](end_span)</h3>
+                    <span style="color: var(--primary); font-weight: 700; font-size: 0.8rem; margin-bottom: 15px; display: block;">Mezan Abdulhakeem Al-Odheib Auto Maintenance Co. | [span_21](start_span)Riyadh[span_21](end_span)</span>
+                    [span_22](start_span)<p style="color: var(--text-dim); font-size: 0.85rem;">Managing AR[span_22](end_span)[span_23](start_span), collections[span_23](end_span)[span_24](start_span), and Tamara gateway reconciliations[span_24](end_span) [span_25](start_span)in the Riyadh market[span_25](end_span) [span_26](start_span)from 2022 to the present[span_26](end_span).</p>
                 </div>
                 <div class="card">
-                    <i class="fas fa-balance-scale" style="font-size: 2rem; color: var(--primary); margin-bottom: 20px; display: block;"></i>
-                    <h3>Accounting Core</h3>
-                    <div class="skills-container">
-                        [span_18](start_span)<span class="skill-chip">AR & AP Management[span_18](end_span)</span>
-                        [span_19](start_span)<span class="skill-chip">IFRS Standards[span_19](end_span)</span>
-                        [span_20](start_span)<span class="skill-chip">VAT & WHT Filing[span_20](end_span)</span>
-                        [span_21](start_span)<span class="skill-chip">Bank Reconciliation[span_21](end_span)</span>
-                        [span_22](start_span)<span class="skill-chip">Year-End Closing[span_22](end_span)</span>
-                    </div>
+                    [span_27](start_span)<h3 style="font-size: 1.1rem; margin-bottom: 5px;">Accountant[span_27](end_span)</h3>
+                    <span style="color: var(--primary); font-weight: 700; font-size: 0.8rem; margin-bottom: 15px; display: block;">Qurtoba Clothing Factory | [span_28](start_span)Egypt[span_28](end_span)</span>
+                    [span_29](start_span)<p style="color: var(--text-dim); font-size: 0.85rem;">Led collection follow-ups[span_29](end_span)[span_30](start_span), bookkeeping[span_30](end_span)[span_31](start_span), and customer account reconciliations[span_31](end_span) [span_32](start_span)in 2022[span_32](end_span).</p>
                 </div>
             </div>
         </div>
@@ -156,27 +144,29 @@
 
     <footer>
         <div class="container">
-            [span_23](start_span)<p>Riyadh, Saudi Arabia[span_23](end_span)</p>
-            <p style="margin-top: 10px; font-size: 0.8rem;">© 2026 AHMED ALI GHANEM. All Rights Reserved.</p>
+            [span_33](start_span)<p>Ahmed Ali Ghanem[span_33](end_span) | [span_34](start_span)Based in Riyadh, KSA[span_34](end_span)</p>
+            <p style="margin-top: 10px; opacity: 0.5;">© 2026 All Rights Reserved.</p>
         </div>
     </footer>
 
     <script>
+        // Particles Effect
         particlesJS("particles-js", {
             "particles": {
-                "number": { "value": 50 },
+                "number": { "value": 45 },
                 "color": { "value": "#2563eb" },
                 "opacity": { "value": 0.2 },
                 "size": { "value": 2 },
                 "line_linked": { "enable": true, "distance": 150, "color": "#2563eb", "opacity": 0.1, "width": 1 },
-                "move": { "enable": true, "speed": 1 }
+                "move": { "enable": true, "speed": 0.8 }
             }
         });
 
+        // GSAP Scroll Animations
         gsap.registerPlugin(ScrollTrigger);
         gsap.utils.toArray(".card").forEach(card => {
             gsap.from(card, {
-                scrollTrigger: { trigger: card, start: "top 90%" },
+                scrollTrigger: { trigger: card, start: "top 95%" },
                 opacity: 0, y: 30, duration: 0.8, ease: "power2.out"
             });
         });
