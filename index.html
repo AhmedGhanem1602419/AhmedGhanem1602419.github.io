@@ -1,266 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahmed Ghanem | Financial Insights & Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ahmed Ghanem | Senior Accountant</title>
 
-    <!-- SEO -->
-    <meta name="description" content="Ahmed Ghanem - Senior Accountant specialized in Accounts Receivable, Financial Auditing & Oracle ERP in Riyadh">
+<meta name="description" content="Ahmed Ghanem - Senior Accountant with 5+ years experience in AR, Financial Reconciliation, Oracle ERP & IFRS">
 
-    <!-- Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Libraries -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
-    <style>
-        :root {
-            --primary: #2563eb;
-            --bg: #030712;
-            --card-bg: rgba(17, 24, 39, 0.8);
-            --text-main: #f9fafb;
-            --text-dim: #9ca3af;
-            --border: rgba(255, 255, 255, 0.08);
-        }
+<style>
+:root{
+--primary:#2563eb;
+--bg:#030712;
+--card:#111827;
+--text:#f9fafb;
+--dim:#9ca3af;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Plus Jakarta Sans';background:var(--bg);color:var(--text)}
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+.container{max-width:1100px;margin:auto;padding:20px}
 
-        body {
-            background: var(--bg);
-            color: var(--text-main);
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            overflow-x: hidden;
-        }
+h1,h2{font-weight:800}
+section{padding:70px 0;border-bottom:1px solid #222}
 
-        #particles-js {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
 
-        .container {
-            max-width: 1100px;
-            margin: auto;
-            padding: 0 20px;
-            position: relative;
-            z-index: 2;
-        }
+.card{
+background:var(--card);
+padding:25px;
+border-radius:15px;
+transition:.3s;
+}
+.card:hover{transform:translateY(-8px);border:1px solid var(--primary)}
 
-        nav {
-            position: fixed;
-            width: 100%;
-            padding: 20px 0;
-            backdrop-filter: blur(15px);
-            border-bottom: 1px solid var(--border);
-            z-index: 1000;
-        }
+.hero{text-align:center;padding-top:120px}
+.hero img{width:140px;border-radius:50%;margin-bottom:20px}
+.hero p{color:var(--dim);max-width:600px;margin:auto}
 
-        .nav-content {
-            display: flex;
-            justify-content: space-between;
-        }
+.social a{margin:0 10px;color:white;font-size:20px}
+.social a:hover{color:var(--primary)}
 
-        .logo {
-            font-weight: 800;
-            font-size: 1.5rem;
-        }
-
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            text-align: center;
-        }
-
-        .profile-container {
-            width: 160px;
-            height: 160px;
-            margin: auto;
-            padding: 5px;
-            background: linear-gradient(45deg, var(--primary), #60a5fa);
-            border-radius: 50%;
-        }
-
-        .profile-img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            border: 4px solid var(--bg);
-        }
-
-        h1 {
-            font-size: 3rem;
-            margin: 20px 0;
-        }
-
-        p {
-            color: var(--text-dim);
-            max-width: 600px;
-            margin: auto;
-        }
-
-        .socials {
-            margin-top: 20px;
-            font-size: 1.3rem;
-        }
-
-        .socials a {
-            margin: 0 10px;
-            color: white;
-            transition: 0.3s;
-        }
-
-        .socials a:hover {
-            color: var(--primary);
-            transform: scale(1.2);
-        }
-
-        section {
-            padding: 80px 0;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .section-title {
-            font-size: 2rem;
-            margin-bottom: 30px;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .card {
-            background: var(--card-bg);
-            padding: 25px;
-            border-radius: 15px;
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            border: 1px solid var(--primary);
-        }
-
-        footer {
-            text-align: center;
-            padding: 30px;
-            color: var(--text-dim);
-        }
-    </style>
+ul{color:var(--dim);padding-left:20px}
+li{margin-bottom:8px}
+</style>
 </head>
 
 <body>
 
-<div id="particles-js"></div>
-
-<!-- NAV -->
-<nav>
-    <div class="container nav-content">
-        <div class="logo">AG<span style="color: var(--primary);">.</span></div>
-        <div style="font-size: 0.8rem;">FINANCIAL STRATEGY</div>
-    </div>
-</nav>
-
 <!-- HERO -->
-<header class="hero">
-    <div class="container">
-        <div class="profile-container">
-            <img src="profile.jpg" class="profile-img">
-        </div>
+<section class="hero">
+<div class="container">
+<img src="profile.jpg">
 
-        <h1>Ahmed <span style="color: var(--primary);">Ghanem</span></h1>
+<h1>Ahmed <span style="color:var(--primary)">Ghanem</span></h1>
 
-        <p>
-            Senior Accountant specialized in Accounts Receivable,
-            financial auditing, and Oracle ERP systems.
-            Bridging financial data with strategic growth.
-        </p>
+<p>
+Senior Accountant with 5+ years experience in Saudi & Egyptian markets,
+specialized in Accounts Receivable, financial reconciliation, and Oracle ERP systems.
+</p>
 
-        <div class="socials">
-            <a href="https://www.linkedin.com/in/ahmed-ali-ghanem2419"><i class="fab fa-linkedin"></i></a>
-            <a href="https://wa.me/966565368979"><i class="fab fa-whatsapp"></i></a>
-            <a href="mailto:aliahmedali1602419@gmail.com"><i class="fas fa-envelope"></i></a>
-        </div>
-    </div>
-</header>
+<div class="social">
+<a href="https://www.linkedin.com/in/ahmed-ali-ghanem2419"><i class="fab fa-linkedin"></i></a>
+<a href="https://wa.me/966565368979"><i class="fab fa-whatsapp"></i></a>
+<a href="mailto:aliahmedali1602419@gmail.com"><i class="fas fa-envelope"></i></a>
+</div>
 
-<!-- BLOG -->
+</div>
+</section>
+
+<!-- SUMMARY -->
 <section>
-    <div class="container">
-        <h2 class="section-title">Financial Insights</h2>
-
-        <div class="grid">
-            <div class="card">
-                <h3>Tamara Gateway Reconciliation</h3>
-                <p>Managing payment gateways and ensuring accurate financial records.</p>
-            </div>
-
-            <div class="card">
-                <h3>Advanced Excel for Auditors</h3>
-                <p>Automating reports and simplifying financial analysis.</p>
-            </div>
-
-            <div class="card">
-                <h3>IFRS Compliance</h3>
-                <p>Applying international standards in real-world accounting.</p>
-            </div>
-        </div>
-    </div>
+<div class="container">
+<h2>Professional Summary</h2>
+<p style="color:var(--dim);margin-top:15px">
+Dedicated Accountant with 5+ years of experience specializing in AR, financial settlements,
+Tamara payment reconciliation, and IFRS compliance. Skilled in managing credit sales,
+auditing operations, and ensuring financial data integrity across complex systems.
+</p>
+</div>
 </section>
 
 <!-- EXPERIENCE -->
 <section>
-    <div class="container">
-        <h2 class="section-title">Experience</h2>
+<div class="container">
+<h2>Experience</h2>
 
-        <div class="grid">
-            <div class="card">
-                <h3>Senior Accountant</h3>
-                <p>Mezan Co. - Riyadh</p>
-                <p>Managing AR, collections & reconciliations since 2022.</p>
-            </div>
+<div class="grid">
 
-            <div class="card">
-                <h3>Accountant</h3>
-                <p>Qurtoba Factory - Egypt</p>
-                <p>Bookkeeping & customer accounts management.</p>
-            </div>
-        </div>
-    </div>
+<div class="card">
+<h3>Senior Accountant</h3>
+<p style="color:var(--primary)">Mezan Co. - Riyadh (2022 - Present)</p>
+<ul>
+<li>Managed AR & collections ensuring strong cash flow</li>
+<li>Handled Tamara reconciliations & suspense accounts</li>
+<li>Audited daily operations & verified pricing policies</li>
+<li>Supported system issues & cashier operations</li>
+<li>Managed fleet & employee settlements</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>Accountant</h3>
+<p style="color:var(--primary)">Qurtoba Factory - Egypt (2022)</p>
+<ul>
+<li>Customer collections & follow-ups</li>
+<li>Journal entries & bookkeeping</li>
+<li>Account reconciliation & discrepancy resolution</li>
+</ul>
+</div>
+
+</div>
+</div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-    <p>Ahmed Ghanem | Riyadh, Saudi Arabia</p>
-    <p>© 2026 All Rights Reserved</p>
-</footer>
+<!-- SKILLS -->
+<section>
+<div class="container">
+<h2>Skills</h2>
 
-<!-- JS -->
+<div class="grid">
+<div class="card"><b>Accounting</b><br>AR/AP, GL, Closing, VAT, WHT</div>
+<div class="card"><b>Systems</b><br>Oracle ERP, ZATCA</div>
+<div class="card"><b>Tools</b><br>Excel, Word, Outlook</div>
+<div class="card"><b>Finance</b><br>Bank Reconciliation, Reporting</div>
+</div>
+
+</div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section>
+<div class="container">
+<h2>Certifications</h2>
+
+<div class="grid">
+<div class="card">MOS Master 2016 (Excel Expert)</div>
+<div class="card">Oracle Financial Systems</div>
+<div class="card">Digital Marketing - Udacity</div>
+<div class="card">ICDL Certification</div>
+</div>
+
+</div>
+</section>
+
+<!-- EDUCATION -->
+<section>
+<div class="container">
+<h2>Education</h2>
+
+<div class="card">
+Bachelor of Commerce (Accounting)<br>
+Tanta University - 2019
+</div>
+
+</div>
+</section>
+
+<!-- LANGUAGES -->
+<section>
+<div class="container">
+<h2>Languages</h2>
+
+<div class="grid">
+<div class="card">Arabic (Native)</div>
+<div class="card">English (Good)</div>
+</div>
+
+</div>
+</section>
+
+<!-- CONTACT -->
+<section>
+<div class="container">
+<h2>Contact</h2>
+
+<div class="card">
+<p>Email: aliahmedali1602419@gmail.com</p>
+<p>Phone: +966565368979</p>
+<p>Location: Riyadh, Saudi Arabia</p>
+</div>
+
+</div>
+</section>
+
 <script>
-particlesJS("particles-js", {
-    particles: {
-        number: { value: 40 },
-        size: { value: 2 },
-        move: { speed: 1 },
-        line_linked: { enable: true }
-    }
-});
-
-gsap.registerPlugin(ScrollTrigger);
-
-gsap.from(".card", {
-    scrollTrigger: ".card",
-    opacity: 0,
-    y: 50,
-    duration: 1,
-    stagger: 0.2
+gsap.from(".card",{
+scrollTrigger:".card",
+opacity:0,
+y:50,
+duration:1,
+stagger:.2
 });
 </script>
 
