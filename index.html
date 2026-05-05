@@ -1,8 +1,38 @@
-<nav>
+<nav class="navbar">
+    <div class="logo">Portfolio</div>
     <ul class="nav-links">
-        <li><a href="index.html">الرئيسية / Home</a></li>
-        <li><a href="resume.html">السيرة الذاتية / CV</a></li>
-        <li><a href="blog.html">المدونة / Blog</a></li>
-        <li><a href="login.html">دخول / Login</a></li>
+        <li><a href="#home">الرئيسية</a></li>
+        <li><a href="#cv">السيرة الذاتية</a></li>
+        <li><a href="#blog" class="active">المدونة</a></li>
+        <li><a href="#login" class="btn-login">دخول</a></li>
     </ul>
 </nav>
+
+<section id="blog" class="blog-container">
+    <header class="section-header">
+        <h2>آخر التدوينات</h2>
+        <p>أشارككم هنا بعض الخبرات في المحاسبة والتقنية</p>
+    </header>
+
+    <div class="blog-grid">
+        <article class="blog-card">
+            <div class="card-img" style="background-image: url('blog-thumb1.jpg');"></div>
+            <div class="card-content">
+                <span class="category">Accounting</span>
+                <h3>أهمية التحصيل (Collections) في استقرار الشركات</h3>
+                <p>نظرة عميقة على دور محاسب الـ AR في الحفاظ على التدفق النقدي...</p>
+                <a href="#" class="read-more">اقرأ المزيد</a>
+            </div>
+        </article>
+
+        <article class="blog-card">
+            <div class="card-img" style="background-image: url('blog-thumb2.jpg');"></div>
+            <div class="card-content">
+                <span class="category">Tech</span>
+                <h3>كيف تدمج لغة البرمجة في عملك المحاسبي</h3>
+                <p>استخدام البرمجة لتسهيل التقارير المالية المتكررة...</p>
+                <a href="#" class="read-more">اقرأ المزيد</a>
+            </div>
+        </article>
+    </div>
+</section>
