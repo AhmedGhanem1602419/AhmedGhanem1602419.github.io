@@ -1,63 +1,101 @@
+/* تنسيق عام */
 body {
+    direction: rtl; /* للتحويل للانجليزي نغيرها لـ ltr */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f7f6;
+    background-color: #121212; /* Dark Mode */
+    color: #e0e0e0;
+}
+
+/* التبويبات - Navbar */
+.navbar {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    min-height: 100vh;
-    margin: 0;
+    padding: 20px 5%;
+    background: #1e1e1e;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-.profile-card {
-    background: #fff;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    text-align: center;
-    max-width: 400px;
-    width: 90%;
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 25px;
 }
 
-.main-img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    border: 5px solid #007bff;
-    object-fit: cover;
-    margin-bottom: 15px;
-}
-
-.title {
-    color: #666;
-    font-size: 1.1em;
-    margin-bottom: 20px;
-}
-
-.btn {
-    display: inline-block;
-    padding: 10px 20px;
-    background: #007bff;
-    color: white;
+.nav-links a {
     text-decoration: none;
+    color: #bbb;
+    transition: 0.3s;
+}
+
+.nav-links a.active, .nav-links a:hover {
+    color: #00adb5; /* لون مميز للتبويب النشط */
+}
+
+.btn-login {
+    background: #00adb5;
+    color: #fff !important;
+    padding: 8px 20px;
     border-radius: 5px;
-    transition: 0.3s;
 }
 
-.btn:hover {
-    background: #0056b3;
+/* المدونة - Blog Grid */
+.blog-container {
+    padding: 60px 5%;
 }
 
-.social-links {
-    margin-top: 25px;
+.section-header {
+    text-align: center;
+    margin-bottom: 40px;
 }
 
-.social-links a {
-    font-size: 24px;
-    margin: 0 10px;
-    color: #333;
-    transition: 0.3s;
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
 }
 
-.social-links a:hover {
-    color: #007bff;
+.blog-card {
+    background: #1e1e1e;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    border: 1px solid #333;
+}
+
+.blog-card:hover {
+    transform: translateY(-10px);
+}
+
+.card-img {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    background-color: #333; /* Placeholder */
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.category {
+    font-size: 12px;
+    color: #00adb5;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.card-content h3 {
+    margin: 10px 0;
+    font-size: 1.4rem;
+}
+
+.read-more {
+    display: inline-block;
+    margin-top: 15px;
+    color: #00adb5;
+    text-decoration: none;
+    font-weight: bold;
 }
