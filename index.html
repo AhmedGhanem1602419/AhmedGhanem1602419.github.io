@@ -1,13 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ahmed Ghanem | Financial Insights & Portfolio</title>
-    
+
+    <!-- SEO -->
+    <meta name="description" content="Ahmed Ghanem - Senior Accountant specialized in Accounts Receivable, Financial Auditing & Oracle ERP in Riyadh">
+
+    <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
+    <!-- Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
@@ -23,153 +28,241 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--bg); color: var(--text-main); font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; line-height: 1.6; }
 
-        #particles-js { position: fixed; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 2; }
+        body {
+            background: var(--bg);
+            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
 
-        nav { position: fixed; top: 0; width: 100%; padding: 20px 0; z-index: 1000; backdrop-filter: blur(15px); border-bottom: 1px solid var(--border); }
-        .nav-content { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-weight: 800; font-size: 1.5rem; }
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
 
-        .hero { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; }
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        nav {
+            position: fixed;
+            width: 100%;
+            padding: 20px 0;
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.5rem;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+
         .profile-container {
-            width: 160px; height: 160px; margin: 0 auto 30px; padding: 5px;
+            width: 160px;
+            height: 160px;
+            margin: auto;
+            padding: 5px;
             background: linear-gradient(45deg, var(--primary), #60a5fa);
-            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-            animation: morph 8s ease-in-out infinite;
-        }
-        .profile-img { width: 100%; height: 100%; object-fit: cover; border-radius: inherit; border: 4px solid var(--bg); }
-
-        @keyframes morph {
-            0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
-            50% { border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; }
+            border-radius: 50%;
         }
 
-        .hero h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 15px; }
-        .hero p { color: var(--text-dim); font-size: 1.1rem; max-width: 650px; margin: 0 auto 30px; }
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 4px solid var(--bg);
+        }
 
-        section { padding: 80px 0; border-bottom: 1px solid var(--border); }
-        .section-title { font-size: 2rem; font-weight: 800; margin-bottom: 40px; }
-        .label { color: var(--primary); text-transform: uppercase; letter-spacing: 2px; font-size: 0.75rem; font-weight: 700; margin-bottom: 10px; display: block; }
+        h1 {
+            font-size: 3rem;
+            margin: 20px 0;
+        }
 
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
-        .card { background: var(--card-bg); border: 1px solid var(--border); padding: 35px; border-radius: 20px; transition: 0.4s; }
-        .card:hover { border-color: var(--primary); transform: translateY(-10px); }
+        p {
+            color: var(--text-dim);
+            max-width: 600px;
+            margin: auto;
+        }
 
-        /* Blog Specific Styles */
-        .blog-card { display: flex; flex-direction: column; height: 100%; }
-        .blog-date { font-size: 0.8rem; color: var(--primary); margin-bottom: 10px; font-weight: 600; }
-        .blog-card h3 { font-size: 1.25rem; margin-bottom: 15px; line-height: 1.4; }
-        .blog-excerpt { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 20px; flex-grow: 1; }
-        .read-more { font-weight: 700; font-size: 0.85rem; text-decoration: none; color: var(--text-main); display: flex; align-items: center; gap: 8px; }
-        .read-more:hover { color: var(--primary); }
+        .socials {
+            margin-top: 20px;
+            font-size: 1.3rem;
+        }
 
-        footer { padding: 40px 0; text-align: center; color: var(--text-dim); font-size: 0.85rem; }
+        .socials a {
+            margin: 0 10px;
+            color: white;
+            transition: 0.3s;
+        }
+
+        .socials a:hover {
+            color: var(--primary);
+            transform: scale(1.2);
+        }
+
+        section {
+            padding: 80px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 15px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border: 1px solid var(--primary);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-dim);
+        }
     </style>
 </head>
+
 <body>
 
-    <div id="particles-js"></div>
+<div id="particles-js"></div>
 
-    <nav>
-        <div class="container nav-content">
-            <div class="logo">AG<span style="color: var(--primary);">.</span></div>
-            <div style="font-size: 0.7rem; letter-spacing: 1px; color: var(--text-dim); font-weight: 800;">FINANCIAL STRATEGY</div>
+<!-- NAV -->
+<nav>
+    <div class="container nav-content">
+        <div class="logo">AG<span style="color: var(--primary);">.</span></div>
+        <div style="font-size: 0.8rem;">FINANCIAL STRATEGY</div>
+    </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+    <div class="container">
+        <div class="profile-container">
+            <img src="profile.jpg" class="profile-img">
         </div>
-    </nav>
 
-    <header class="hero">
-        <div class="container">
-            <div class="profile-container">
-                <img src="./profile.jpg" alt="Ahmed Ali Ghanem" class="profile-img">
-            </div>
-            <h1>Ahmed <span style="color: var(--primary);">Ghanem</span></h1>
-            [span_5](start_span)<p>Senior Accountant[span_5](end_span) [span_6](start_span)specialized in Accounts Receivable[span_6](end_span)[span_7](start_span), financial auditing[span_7](end_span)[span_8](start_span), and Oracle ERP systems[span_8](end_span). [span_9](start_span)[span_10](start_span)Bridging financial data with strategic growth[span_9](end_span)[span_10](end_span).</p>
-            <div style="display: flex; justify-content: center; gap: 20px; font-size: 1.3rem;">
-                <a href="https://www.linkedin.com/in/ahmed-ali-ghanem2419" target="_blank" style="color: white;"><i class="fab fa-linkedin"></i></a>
-                <a href="https://wa.me/966565368979" target="_blank" style="color: white;"><i class="fab fa-whatsapp"></i></a>
-                <a href="mailto:aliahmedali1602419@gmail.com" style="color: white;"><i class="fas fa-envelope"></i></a>
-            </div>
+        <h1>Ahmed <span style="color: var(--primary);">Ghanem</span></h1>
+
+        <p>
+            Senior Accountant specialized in Accounts Receivable,
+            financial auditing, and Oracle ERP systems.
+            Bridging financial data with strategic growth.
+        </p>
+
+        <div class="socials">
+            <a href="https://www.linkedin.com/in/ahmed-ali-ghanem2419"><i class="fab fa-linkedin"></i></a>
+            <a href="https://wa.me/966565368979"><i class="fab fa-whatsapp"></i></a>
+            <a href="mailto:aliahmedali1602419@gmail.com"><i class="fas fa-envelope"></i></a>
         </div>
-    </header>
+    </div>
+</header>
 
-    <section id="blog">
-        <div class="container">
-            <span class="label">Knowledge Sharing</span>
-            <h2 class="section-title">Financial Insights</h2>
-            <div class="grid">
-                <article class="card blog-card">
-                    <span class="blog-date">May 2026</span>
-                    [span_11](start_span)[span_12](start_span)<h3>Navigating Tamara Gateway Reconciliations[span_11](end_span)[span_12](end_span)</h3>
-                    [span_13](start_span)[span_14](start_span)<p class="blog-excerpt">Insights into managing complex payment gateways in the Saudi market and ensuring 100% data integrity[span_13](end_span)[span_14](end_span).</p>
-                    <a href="#" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
-                </article>
+<!-- BLOG -->
+<section>
+    <div class="container">
+        <h2 class="section-title">Financial Insights</h2>
 
-                <article class="card blog-card">
-                    <span class="blog-date">April 2026</span>
-                    [span_15](start_span)<h3>Advanced Excel for Modern Auditors[span_15](end_span)</h3>
-                    [span_16](start_span)<p class="blog-excerpt">How MOS Master techniques can streamline audit logs and automate complex journal entries[span_16](end_span).</p>
-                    <a href="#" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
-                </article>
-
-                <article class="card blog-card">
-                    <span class="blog-date">March 2026</span>
-                    [span_17](start_span)<h3>IFRS Compliance in Retail Markets[span_17](end_span)</h3>
-                    [span_18](start_span)[span_19](start_span)<p class="blog-excerpt">Understanding the impact of international standards on AR and inventory management in Egypt and KSA[span_18](end_span)[span_19](end_span).</p>
-                    <a href="#" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
-                </article>
+        <div class="grid">
+            <div class="card">
+                <h3>Tamara Gateway Reconciliation</h3>
+                <p>Managing payment gateways and ensuring accurate financial records.</p>
             </div>
-        </div>
-    </section>
 
-    <section id="experience">
-        <div class="container">
-            <span class="label">Career Track</span>
-            <h2 class="section-title">Professional Journey</h2>
-            <div class="grid">
-                <div class="card">
-                    [span_20](start_span)<h3 style="font-size: 1.1rem; margin-bottom: 5px;">Senior Accountant[span_20](end_span)</h3>
-                    <span style="color: var(--primary); font-weight: 700; font-size: 0.8rem; margin-bottom: 15px; display: block;">Mezan Abdulhakeem Al-Odheib Auto Maintenance Co. | [span_21](start_span)Riyadh[span_21](end_span)</span>
-                    [span_22](start_span)<p style="color: var(--text-dim); font-size: 0.85rem;">Managing AR[span_22](end_span)[span_23](start_span), collections[span_23](end_span)[span_24](start_span), and Tamara gateway reconciliations[span_24](end_span) [span_25](start_span)in the Riyadh market[span_25](end_span) [span_26](start_span)from 2022 to the present[span_26](end_span).</p>
-                </div>
-                <div class="card">
-                    [span_27](start_span)<h3 style="font-size: 1.1rem; margin-bottom: 5px;">Accountant[span_27](end_span)</h3>
-                    <span style="color: var(--primary); font-weight: 700; font-size: 0.8rem; margin-bottom: 15px; display: block;">Qurtoba Clothing Factory | [span_28](start_span)Egypt[span_28](end_span)</span>
-                    [span_29](start_span)<p style="color: var(--text-dim); font-size: 0.85rem;">Led collection follow-ups[span_29](end_span)[span_30](start_span), bookkeeping[span_30](end_span)[span_31](start_span), and customer account reconciliations[span_31](end_span) [span_32](start_span)in 2022[span_32](end_span).</p>
-                </div>
+            <div class="card">
+                <h3>Advanced Excel for Auditors</h3>
+                <p>Automating reports and simplifying financial analysis.</p>
+            </div>
+
+            <div class="card">
+                <h3>IFRS Compliance</h3>
+                <p>Applying international standards in real-world accounting.</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <footer>
-        <div class="container">
-            [span_33](start_span)<p>Ahmed Ali Ghanem[span_33](end_span) | [span_34](start_span)Based in Riyadh, KSA[span_34](end_span)</p>
-            <p style="margin-top: 10px; opacity: 0.5;">© 2026 All Rights Reserved.</p>
+<!-- EXPERIENCE -->
+<section>
+    <div class="container">
+        <h2 class="section-title">Experience</h2>
+
+        <div class="grid">
+            <div class="card">
+                <h3>Senior Accountant</h3>
+                <p>Mezan Co. - Riyadh</p>
+                <p>Managing AR, collections & reconciliations since 2022.</p>
+            </div>
+
+            <div class="card">
+                <h3>Accountant</h3>
+                <p>Qurtoba Factory - Egypt</p>
+                <p>Bookkeeping & customer accounts management.</p>
+            </div>
         </div>
-    </footer>
+    </div>
+</section>
 
-    <script>
-        // Particles Effect
-        particlesJS("particles-js", {
-            "particles": {
-                "number": { "value": 45 },
-                "color": { "value": "#2563eb" },
-                "opacity": { "value": 0.2 },
-                "size": { "value": 2 },
-                "line_linked": { "enable": true, "distance": 150, "color": "#2563eb", "opacity": 0.1, "width": 1 },
-                "move": { "enable": true, "speed": 0.8 }
-            }
-        });
+<!-- FOOTER -->
+<footer>
+    <p>Ahmed Ghanem | Riyadh, Saudi Arabia</p>
+    <p>© 2026 All Rights Reserved</p>
+</footer>
 
-        // GSAP Scroll Animations
-        gsap.registerPlugin(ScrollTrigger);
-        gsap.utils.toArray(".card").forEach(card => {
-            gsap.from(card, {
-                scrollTrigger: { trigger: card, start: "top 95%" },
-                opacity: 0, y: 30, duration: 0.8, ease: "power2.out"
-            });
-        });
-    </script>
+<!-- JS -->
+<script>
+particlesJS("particles-js", {
+    particles: {
+        number: { value: 40 },
+        size: { value: 2 },
+        move: { speed: 1 },
+        line_linked: { enable: true }
+    }
+});
+
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.from(".card", {
+    scrollTrigger: ".card",
+    opacity: 0,
+    y: 50,
+    duration: 1,
+    stagger: 0.2
+});
+</script>
+
 </body>
 </html>
