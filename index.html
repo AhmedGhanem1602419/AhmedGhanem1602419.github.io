@@ -1,128 +1,97 @@
-import { motion } from "framer-motion";
+import { useState } from "react"; import { motion } from "framer-motion";
 
-export default function Portfolio() {
-  const skills = [
-    "Accounts Receivable",
-    "Advanced Excel",
-    "Power BI",
-    "Financial Reporting",
-    "ERP Systems",
-    "Bank Reconciliation",
-    "VAT & Taxation",
-    "Process Optimization",
-  ];
+export default function Portfolio() { const phoneNumber = "201234567890"; // غيره لرقمك
 
-  const projects = [
-    {
-      title: "Financial Dashboard",
-      desc: "Interactive dashboard for financial KPIs and reporting automation.",
-    },
-    {
-      title: "Invoice Automation System",
-      desc: "Automated system for invoice tracking and processing.",
-    },
-    {
-      title: "AR Reporting Optimization",
-      desc: "Improved accounts receivable reporting efficiency and accuracy.",
-    },
-  ];
+const [form, setForm] = useState({ name: "", message: "" });
 
-  return (
-    <div className="min-h-screen bg-black text-white overflow-hidden">
+const sendWhatsApp = () => { if (!form.message) return;
 
-      {/* HERO */}
-      <section className="max-w-7xl mx-auto px-4 py-24 grid lg:grid-cols-2 gap-12 items-center">
+const text = encodeURIComponent(
+  `New message from portfolio 🚀\n\nName: ${form.name || "Unknown"}\nMessage: ${form.message}`
+);
 
-        <motion.div
-          initial={{ x: -80, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.8 }}
-        >
-          <p className="text-gray-400 uppercase tracking-[5px] text-sm">
-            Financial Specialist
-          </p>
+window.open(`https://wa.me/${phoneNumber}?text=${text}`, "_blank");
 
-          <h1 className="text-6xl font-black mt-4">
-            Ahmed <span className="text-gray-400 block">Ghanem</span>
-          </h1>
+};
 
-          <p className="text-gray-300 mt-6 leading-8">
-            Accounts Receivable Accountant focused on financial accuracy,
-            ERP systems, reporting, and business optimization.
-          </p>
+const openQuickChat = (msg) => { const text = encodeURIComponent(msg); window.open(https://wa.me/${phoneNumber}?text=${text}, "_blank"); };
 
-          <div className="flex gap-4 mt-8 flex-wrap">
-            <button className="px-6 py-4 bg-white text-black rounded-2xl font-bold hover:scale-105 transition">
-              Download CV
-            </button>
-            <button className="px-6 py-4 border border-white/20 rounded-2xl hover:bg-white/10 transition">
-              Contact Me
-            </button>
-          </div>
-        </motion.div>
+return ( <div className="min-h-screen bg-black text-white">
 
-        {/* IMAGE */}
-        <motion.div
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          className="flex justify-center"
-        >
-          <img
-            src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e"
-            className="w-[300px] md:w-[380px] h-[420px] object-cover rounded-[30px] hover:scale-105 transition duration-700"
-          />
-        </motion.div>
-      </section>
+{/* HERO */}
+  <section className="max-w-6xl mx-auto px-4 py-24 text-center">
+    <motion.h1
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="text-5xl md:text-7xl font-black"
+    >
+      Ahmed Ghanem
+    </motion.h1>
 
-      {/* SKILLS */}
-      <section className="max-w-7xl mx-auto px-4 py-20">
-        <h2 className="text-4xl font-bold mb-10">Skills</h2>
+    <p className="text-gray-400 mt-6">
+      Accounts Receivable Accountant | Financial Specialist
+    </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {skills.map((skill, i) => (
-            <motion.div
-              key={i}
-              whileHover={{ y: -10 }}
-              className="p-6 bg-white/5 border border-white/10 rounded-3xl"
-            >
-              {skill}
-            </motion.div>
-          ))}
-        </div>
-      </section>
+    {/* QUICK ACTIONS */}
+    <div className="flex flex-wrap justify-center gap-4 mt-10">
+      <button
+        onClick={() => openQuickChat("Hello Ahmed, I want to hire you 💼")}
+        className="px-6 py-4 bg-white text-black rounded-2xl font-bold hover:scale-105 transition"
+      >
+        Hire Me
+      </button>
 
-      {/* PROJECTS */}
-      <section className="max-w-7xl mx-auto px-4 py-20">
-        <h2 className="text-4xl font-bold mb-10">Projects</h2>
+      <button
+        onClick={() => openQuickChat("I want to ask about your experience")}
+        className="px-6 py-4 border border-white/20 rounded-2xl hover:bg-white/10 transition"
+      >
+        Ask Question
+      </button>
 
-        <div className="grid md:grid-cols-3 gap-6">
-          {projects.map((p, i) => (
-            <motion.div
-              key={i}
-              whileHover={{ scale: 1.05 }}
-              className="p-6 bg-white/5 border border-white/10 rounded-3xl"
-            >
-              <h3 className="text-xl font-bold mb-3">{p.title}</h3>
-              <p className="text-gray-400">{p.desc}</p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* CONTACT */}
-      <section className="max-w-3xl mx-auto px-4 py-20 text-center">
-        <div className="p-10 bg-white/5 border border-white/10 rounded-3xl">
-          <h2 className="text-4xl font-bold mb-6">Contact Me</h2>
-          <p className="text-gray-400 mb-6">
-            Let’s build something great together
-          </p>
-
-          <button className="px-8 py-4 bg-white text-black rounded-2xl font-bold hover:scale-105 transition">
-            Send Message
-          </button>
-        </div>
-      </section>
+      <button
+        onClick={() => openQuickChat("Can you send me your CV?")}
+        className="px-6 py-4 border border-white/20 rounded-2xl hover:bg-white/10 transition"
+      >
+        Request CV
+      </button>
     </div>
-  );
-}
+  </section>
+
+  {/* LEAD FORM */}
+  <section className="max-w-xl mx-auto px-4 py-20">
+    <div className="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-xl">
+
+      <h2 className="text-3xl font-bold mb-6">Contact Me</h2>
+
+      <input
+        placeholder="Your Name"
+        className="w-full p-3 mb-4 rounded-xl bg-white/10 outline-none"
+        onChange={(e) => setForm({ ...form, name: e.target.value })}
+      />
+
+      <textarea
+        placeholder="Your Message"
+        className="w-full p-3 mb-4 rounded-xl bg-white/10 outline-none h-32"
+        onChange={(e) => setForm({ ...form, message: e.target.value })}
+      />
+
+      <button
+        onClick={sendWhatsApp}
+        className="w-full py-4 bg-green-500 text-black font-bold rounded-2xl hover:scale-105 transition"
+      >
+        Send via WhatsApp
+      </button>
+    </div>
+  </section>
+
+  {/* FLOAT WHATSAPP BUTTON */}
+  <button
+    onClick={() => openQuickChat("Hello Ahmed 👋 I visited your portfolio")}
+    className="fixed bottom-6 right-6 bg-green-500 text-black px-5 py-3 rounded-full shadow-lg hover:scale-110 transition"
+  >
+    WhatsApp
+  </button>
+
+</div>
+
+); }
